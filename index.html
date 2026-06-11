@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planetary Assets Zrt — Industrial Hemp Innovation | Hungary</title>
+<meta name="description" content="Planetary Assets Zrt is a Hungarian industrial hemp company developing hemp fibre products, hemp construction materials, and circular economy solutions. Infrastructure, R&D, education and policy.">
+<meta name="keywords" content="industrial hemp Hungary, hemp fibre products, hemp construction materials, hemp innovation, circular economy hemp, ipari kender, hemp policy Europe, hemp R&D">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Planetary Assets Zrt — Industrial Hemp Innovation">
+<meta property="og:description" content="Hungarian industrial hemp company developing hemp fibre, construction materials, education programmes and policy frameworks.">
+<meta property="og:url" content="https://planetaryassets.org">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://planetaryassets.org">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-95VCPYN8FN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-95VCPYN8FN');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a0e1a;
+    --navy-mid: #0f1628;
+    --navy-light: #1a2240;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-pale: #f5e9c8;
+    --cream: #f8f4ea;
+    --white: #ffffff;
+    --text-muted: rgba(255,255,255,0.45);
+    --text-dim: rgba(255,255,255,0.7);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Syne', sans-serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ─── GRAIN OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 4rem;
+    background: linear-gradient(to bottom, rgba(10,14,26,0.95) 0%, transparent 100%);
+    backdrop-filter: blur(2px);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+
+  .logo-mark {
+    width: 38px;
+    height: 38px;
+  }
+
+  .logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+
+  .logo-text span {
+    color: var(--gold);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  nav ul a {
+    text-decoration: none;
+    color: var(--text-dim);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  nav ul a:hover { color: var(--gold-light); }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold) !important;
+    padding: 0.5rem 1.25rem;
+    transition: background 0.3s, color 0.3s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold) !important;
+    color: var(--navy) !important;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 4rem 4rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 70% at 70% 40%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 50% at 20% 80%, rgba(201,168,76,0.05) 0%, transparent 50%),
+      linear-gradient(160deg, #0a0e1a 0%, #0d1225 50%, #0a0e1a 100%);
+  }
+
+  /* Decorative planet */
+  .hero-planet {
+    position: absolute;
+    right: -5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 55vw;
+    max-width: 800px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 35% 35%, rgba(201,168,76,0.12) 0%, rgba(15,22,40,0.6) 40%, rgba(10,14,26,0.95) 70%);
+    border: 1px solid rgba(201,168,76,0.12);
+    box-shadow:
+      inset -40px -40px 80px rgba(201,168,76,0.06),
+      0 0 120px rgba(201,168,76,0.04);
+    animation: rotatePlanet 40s linear infinite;
+  }
+
+  .hero-planet::before {
+    content: '';
+    position: absolute;
+    inset: -15%;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.06);
+    animation: rotatePlanet 60s linear infinite reverse;
+  }
+
+  .hero-planet::after {
+    content: '';
+    position: absolute;
+    inset: -30%;
+    border-radius: 50%;
+    border: 1px dashed rgba(201,168,76,0.04);
+  }
+
+  /* Hemp leaf silhouettes */
+  .hemp-deco {
+    position: absolute;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  .hemp-deco-1 {
+    right: 15%;
+    top: 20%;
+    font-size: 20rem;
+    transform: rotate(15deg);
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .hemp-deco-2 {
+    right: 35%;
+    bottom: 10%;
+    font-size: 10rem;
+    transform: rotate(-20deg);
+    animation: float 12s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(15deg); }
+    50% { transform: translateY(-20px) rotate(15deg); }
+  }
+
+  @keyframes rotatePlanet {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(360deg); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.75rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.5s;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-title .line2 {
+    display: block;
+    padding-left: 3rem;
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-dim);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.7s;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.9s;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.9rem 2rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s;
+    font-family: 'Syne', sans-serif;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+  }
+
+  .btn-ghost {
+    color: var(--text-dim);
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s;
+  }
+
+  .btn-ghost:hover { color: var(--gold-light); }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 4rem;
+    left: 4rem;
+    right: 4rem;
+    display: flex;
+    gap: 4rem;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.1s;
+  }
+
+  .stat {
+    border-left: 1px solid rgba(201,168,76,0.3);
+    padding-left: 1.5rem;
+  }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 0.4rem;
+    display: block;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 8rem 4rem; }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  /* ─── ABOUT ─── */
+  .about {
+    background: var(--navy-mid);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about::before {
+    content: '';
+    position: absolute;
+    right: -10%;
+    top: -20%;
+    width: 50%;
+    height: 140%;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.05) 0%, transparent 70%);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .about-text p {
+    color: var(--text-dim);
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-card {
+    background: var(--navy-light);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 2.5rem;
+    position: relative;
+  }
+
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .about-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .about-card p {
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: var(--text-dim);
+  }
+
+  .about-card-accent {
+    margin-top: 2rem;
+    background: var(--navy);
+    border: 1px solid rgba(201,168,76,0.1);
+  }
+
+  /* ─── SERVICES / PILLARS ─── */
+  .services {
+    background: var(--navy);
+    position: relative;
+  }
+
+  .services-header {
+    max-width: 1200px;
+    margin: 0 auto 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+  }
+
+  .services-intro {
+    font-size: 0.92rem;
+    line-height: 1.9;
+    color: var(--text-dim);
+  }
+
+  .pillars {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .pillar {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid rgba(201,168,76,0.15);
+    position: relative;
+    transition: background 0.4s;
+    cursor: default;
+  }
+
+  .pillar:last-child { border-right: none; }
+
+  .pillar:hover { background: rgba(201,168,76,0.04); }
+
+  .pillar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+    transform-origin: left;
+  }
+
+  .pillar:hover::before { transform: scaleX(1); }
+
+  .pillar-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 300;
+    color: rgba(201,168,76,0.15);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    transition: color 0.4s;
+  }
+
+  .pillar:hover .pillar-letter { color: rgba(201,168,76,0.35); }
+
+  .pillar-title {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .pillar-items {
+    list-style: none;
+  }
+
+  .pillar-items li {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    padding: 0.25rem 0;
+    padding-left: 0.75rem;
+    position: relative;
+  }
+
+  .pillar-items li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: rgba(201,168,76,0.4);
+    font-size: 0.7rem;
+  }
+
+  /* ─── NAGYLAK ─── */
+  .nagylak {
+    background: var(--navy-mid);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nagylak-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 5fr 4fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .nagylak-image {
+    position: relative;
+    aspect-ratio: 4/3;
+    background: var(--navy-light);
+    border: 1px solid rgba(201,168,76,0.1);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nagylak-image-inner {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(201,168,76,0.3);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  /* animated hemp stem graphic */
+  .nagylak-graphic {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+  }
+
+  .nagylak-text p {
+    color: var(--text-dim);
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+    font-size: 0.92rem;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    padding: 0.35rem 0.75rem;
+  }
+
+  /* ─── IMPACT ─── */
+  .impact {
+    background: var(--navy);
+  }
+
+  .impact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .impact-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 5rem;
+  }
+
+  .impact-intro {
+    font-size: 0.92rem;
+    line-height: 1.9;
+    color: var(--text-dim);
+  }
+
+  .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: rgba(201,168,76,0.1);
+  }
+
+  .impact-card {
+    background: var(--navy);
+    padding: 3rem 2.5rem;
+    position: relative;
+    transition: background 0.4s;
+  }
+
+  .impact-card:hover { background: var(--navy-light); }
+
+  .impact-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1.75rem;
+    opacity: 0.7;
+  }
+
+  .impact-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .impact-card p {
+    font-size: 0.83rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+  }
+
+  /* ─── GRANTS / FUNDING ─── */
+  .grants {
+    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+  }
+
+  .grants-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .grants-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+
+  .grant-card {
+    background: rgba(201,168,76,0.04);
+    border: 1px solid rgba(201,168,76,0.12);
+    padding: 2rem;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .grant-card:hover {
+    border-color: rgba(201,168,76,0.35);
+    background: rgba(201,168,76,0.07);
+  }
+
+  .grant-cat {
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .grant-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .grant-desc {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    line-height: 1.75;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact {
+    background: var(--navy-mid);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact::before {
+    content: '';
+    position: absolute;
+    left: -20%;
+    top: -30%;
+    width: 70%;
+    height: 160%;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: center;
+  }
+
+  .contact-text p {
+    color: var(--text-dim);
+    line-height: 1.9;
+    margin-bottom: 2rem;
+    font-size: 0.92rem;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-detail-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    min-width: 80px;
+    padding-top: 0.15rem;
+  }
+
+  .contact-detail-value {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  .contact-form {
+    position: relative;
+    z-index: 1;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--white);
+    padding: 0.85rem 1rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-color: rgba(201,168,76,0.6);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 120px; }
+
+  .form-group select option { background: var(--navy-mid); }
+
+  .form-submit {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+  }
+
+  .form-submit:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.25);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 3rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .footer-logo span { color: var(--gold); }
+
+  .footer-copy {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .footer-links a {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ─── SCROLL REVEAL ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── DIVIDER ─── */
+  .gold-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 2rem 0;
+  }
+
+  /* ─── HAMBURGER ─── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+    z-index: 200;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--gold);
+    transition: all 0.3s;
+  }
+
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ─── MOBILE MENU ─── */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,14,26,0.98);
+    z-index: 150;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--text-dim);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: color 0.3s;
+  }
+
+  .mobile-menu a:hover { color: var(--gold-light); }
+
+  /* ─── MOBILE RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    nav {
+      padding: 1.25rem 1.5rem;
+    }
+
+    nav ul { display: none; }
+
+    .hamburger { display: flex; }
+
+    section { padding: 5rem 1.5rem; }
+
+    /* Hero */
+    .hero {
+      padding: 7rem 1.5rem 8rem;
+      min-height: 100svh;
+    }
+
+    .hero-planet {
+      width: 90vw;
+      right: -30%;
+      top: auto;
+      bottom: -10%;
+      transform: none;
+      opacity: 0.4;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 11vw, 4rem);
+    }
+
+    .hero-title .line2 {
+      padding-left: 1.5rem;
+    }
+
+    .hero-sub { font-size: 0.9rem; }
+
+    .hero-actions {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .hero-stats {
+      bottom: 2rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-number { font-size: 1.6rem; }
+
+    /* About */
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    /* Services */
+    .services-header {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .pillars {
+      grid-template-columns: 1fr;
+      border: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .pillar {
+      border-right: none;
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .pillar:last-child { border-bottom: none; }
+
+    .pillar-letter { font-size: 3rem; margin-bottom: 1rem; }
+
+    /* Nagylak */
+    .nagylak-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .nagylak-image {
+      aspect-ratio: 16/9;
+    }
+
+    /* Impact */
+    .impact-header {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .impact-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* Grants */
+    .grants-grid {
+      grid-template-columns: 1fr;
+      margin-top: 2.5rem;
+    }
+
+    /* Contact */
+    .contact-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    /* Footer */
+    footer {
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .footer-links {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title { font-size: clamp(2.4rem, 10vw, 3rem); }
+    .section-title { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+    .hero-stats { gap: 1rem; }
+    .stat { padding-left: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <svg class="logo-mark" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="19" cy="19" r="17" stroke="#c9a84c" stroke-width="0.8" opacity="0.6"/>
+      <circle cx="19" cy="19" r="11" stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/>
+      <!-- Simplified hemp leaf in circle -->
+      <path d="M19 8 L19 30 M19 19 L12 13 M19 19 L26 13 M19 19 L10 22 M19 19 L28 22 M19 19 L13 29 M19 19 L25 29" stroke="#c9a84c" stroke-width="0.7" opacity="0.8"/>
+      <circle cx="19" cy="19" r="2" fill="#c9a84c" opacity="0.9"/>
+    </svg>
+    <span class="logo-text">Planetary <span>Assets</span> Zrt</span>
+  </a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Verticals</a></li>
+    <li><a href="#nagylak">Nagylak</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#grants">Grants</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#services" class="mobile-link">Verticals</a>
+  <a href="#nagylak" class="mobile-link">Nagylak</a>
+  <a href="#impact" class="mobile-link">Impact</a>
+  <a href="#grants" class="mobile-link">Grants</a>
+  <a href="#contact" class="mobile-link" style="color:var(--gold)">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-planet"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Industrial Hemp Innovation</div>
+    <h1 class="hero-title">
+      Turning<br>
+      <em>planetary</em>
+      <span class="line2">assets into<br>circular futures.</span>
+    </h1>
+    <p class="hero-sub">
+      Planetary Assets Zrt is a Hungarian industrial hemp enterprise developing end-to-end value chains — from raw fibre and construction materials to policy frameworks and international knowledge exchange.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Our Verticals</a>
+      <a href="#contact" class="btn-ghost">Partner with us →</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-number">4</span>
+      <span class="stat-label">Core Pillars</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">30+</span>
+      <span class="stat-label">Product Applications</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">∞</span>
+      <span class="stat-label">Circular Potential</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <div class="section-label">Who We Are</div>
+      <h2 class="section-title">A new kind of <em>asset company</em></h2>
+      <div class="gold-divider"></div>
+      <p>
+        Planetary Assets Zrt is an industrial hemp innovation company based in Hungary, operating at the intersection of agriculture, advanced materials, circular economy and international development.
+      </p>
+      <p>
+        We believe industrial hemp is one of the most versatile and underutilised raw materials on the planet — capable of replacing petrochemicals, binding CO₂, building homes, clothing soldiers, and educating communities. Our mission is to unlock that potential systematically, from fibre to policy.
+      </p>
+      <p>
+        From the restoration of the historic Nagylak Hemp Factory to cutting-edge product R&D, we build along the full value chain — and invite partners, investors, and institutions to join us.
+      </p>
+    </div>
+    <div class="about-visual reveal">
+      <div class="about-card">
+        <div class="about-card-title">Our Philosophy</div>
+        <p>
+          True sustainability means closing loops — not just reducing harm. Every product we develop, every policy we shape, every programme we run is designed to regenerate rather than extract.
+        </p>
+      </div>
+      <div class="about-card about-card-accent" style="margin-top:1rem; padding:2rem 2.5rem;">
+        <div class="about-card-title" style="font-size:1rem; margin-bottom:0.75rem;">Registered in Hungary</div>
+        <p style="font-size:0.82rem;">
+          Operating under Hungarian law as a Zártkörűen Működő Részvénytársaság (Zrt), Planetary Assets is structured for long-term institutional collaboration and European grant programmes.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES / PILLARS -->
+<section class="services" id="services">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Four pillars of <em>hemp innovation</em></h2>
+    </div>
+    <p class="services-intro">
+      Our work spans infrastructure, product development, education, and policy — creating a self-reinforcing ecosystem where each pillar strengthens the others.
+    </p>
+  </div>
+  <div class="pillars reveal">
+    <div class="pillar">
+      <div class="pillar-letter">A</div>
+      <div class="pillar-title">Infrastructure</div>
+      <ul class="pillar-items">
+        <li>Brownfield investment & factory restoration</li>
+        <li>Alternative & renewable energy systems</li>
+        <li>Energy-efficient building renovation</li>
+        <li>Technology modernisation</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <div class="pillar-letter">B</div>
+      <div class="pillar-title">Products & R&D</div>
+      <ul class="pillar-items">
+        <li>Hemp fibre: paper, textiles, composites</li>
+        <li>Automotive applications & design elements</li>
+        <li>Defence: ballistic vests, boots, uniforms</li>
+        <li>Biodegradable plastics & pyrolysis</li>
+        <li>Construction: hempcrete, tiles, panels</li>
+        <li>Hurd: acoustic panels, building family</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <div class="pillar-letter">C</div>
+      <div class="pillar-title">Education</div>
+      <ul class="pillar-items">
+        <li>Farmer training & cross-border programmes</li>
+        <li>University curricula & pilot programmes</li>
+        <li>Industry–academia linkages</li>
+        <li>International knowledge exchange</li>
+        <li>Women empowerment initiatives</li>
+        <li>Global hemp hub network</li>
+      </ul>
+    </div>
+    <div class="pillar">
+      <div class="pillar-letter">D</div>
+      <div class="pillar-title">Policy</div>
+      <ul class="pillar-items">
+        <li>Government-level hemp regulatory frameworks</li>
+        <li>Standards for natural textiles & construction</li>
+        <li>National accelerator programmes</li>
+        <li>Circular economy ecosystem support</li>
+        <li>Developing country capacity building</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- NAGYLAK -->
+<section class="nagylak" id="nagylak">
+  <div class="nagylak-inner">
+    <div class="nagylak-image reveal">
+      <svg class="nagylak-graphic" viewBox="0 0 600 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Factory silhouette -->
+        <rect x="80" y="220" width="440" height="180" fill="rgba(201,168,76,0.04)" stroke="rgba(201,168,76,0.12)" stroke-width="1"/>
+        <rect x="100" y="180" width="80" height="40" fill="rgba(201,168,76,0.04)" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+        <rect x="220" y="160" width="80" height="60" fill="rgba(201,168,76,0.04)" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+        <rect x="380" y="190" width="60" height="30" fill="rgba(201,168,76,0.04)" stroke="rgba(201,168,76,0.1)" stroke-width="1"/>
+        <!-- Chimneys -->
+        <rect x="120" y="100" width="16" height="80" fill="rgba(201,168,76,0.06)" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+        <rect x="260" y="80" width="14" height="80" fill="rgba(201,168,76,0.06)" stroke="rgba(201,168,76,0.15)" stroke-width="1"/>
+        <!-- Windows -->
+        <rect x="110" y="260" width="25" height="35" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+        <rect x="160" y="260" width="25" height="35" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+        <rect x="240" y="250" width="25" height="35" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+        <rect x="290" y="250" width="25" height="35" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+        <rect x="350" y="260" width="25" height="35" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+        <rect x="410" y="260" width="25" height="35" fill="rgba(201,168,76,0.08)" stroke="rgba(201,168,76,0.2)" stroke-width="0.5"/>
+        <!-- Ground line -->
+        <line x1="50" y1="400" x2="550" y2="400" stroke="rgba(201,168,76,0.2)" stroke-width="1"/>
+        <!-- Hemp plants -->
+        <g opacity="0.3">
+          <line x1="500" y1="400" x2="500" y2="300" stroke="#c9a84c" stroke-width="1.5"/>
+          <line x1="500" y1="340" x2="485" y2="320" stroke="#c9a84c" stroke-width="1"/>
+          <line x1="500" y1="340" x2="515" y2="320" stroke="#c9a84c" stroke-width="1"/>
+          <line x1="500" y1="360" x2="480" y2="345" stroke="#c9a84c" stroke-width="1"/>
+          <line x1="500" y1="360" x2="520" y2="345" stroke="#c9a84c" stroke-width="1"/>
+          <line x1="535" y1="400" x2="535" y2="320" stroke="#c9a84c" stroke-width="1.5"/>
+          <line x1="535" y1="355" x2="522" y2="338" stroke="#c9a84c" stroke-width="1"/>
+          <line x1="535" y1="355" x2="548" y2="338" stroke="#c9a84c" stroke-width="1"/>
+        </g>
+        <!-- Label -->
+        <text x="300" y="435" fill="rgba(201,168,76,0.25)" font-family="serif" font-size="11" text-anchor="middle" letter-spacing="4">NAGYLAK HEMP FACTORY</text>
+      </svg>
+    </div>
+    <div class="nagylak-text reveal">
+      <div class="section-label">Flagship Project</div>
+      <h2 class="section-title">The <em>Nagylak</em> Hemp Factory</h2>
+      <div class="gold-divider"></div>
+      <p>
+        At the heart of our infrastructure vision is the restoration and modernisation of the historic Nagylak Hemp Factory — a brownfield site with deep roots in Hungary's industrial heritage and enormous potential as a 21st-century hemp processing hub.
+      </p>
+      <p>
+        The project encompasses the full spectrum of sustainable industrial development: renewable energy integration, energy-efficient renovation, and technology modernisation aligned with EU environmental and circular economy standards.
+      </p>
+      <p>
+        Nagylak will serve as our primary R&D base, processing facility, and showcase for what is possible when heritage infrastructure meets regenerative industry.
+      </p>
+      <div class="tag-list">
+        <span class="tag">Brownfield</span>
+        <span class="tag">Renewable Energy</span>
+        <span class="tag">Processing Hub</span>
+        <span class="tag">R&D Centre</span>
+        <span class="tag">EU Compliant</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="impact" id="impact">
+  <div class="impact-inner">
+    <div class="impact-header reveal">
+      <div>
+        <div class="section-label">Why Hemp, Why Now</div>
+        <h2 class="section-title">The <em>environmental</em> case</h2>
+      </div>
+      <p class="impact-intro">
+        Industrial hemp is one of the fastest carbon-sequestering crops on earth. Every product we develop replaces a fossil-fuel-derived alternative — and every field planted absorbs CO₂ at a rate conventional agriculture cannot match.
+      </p>
+    </div>
+    <div class="impact-grid reveal">
+      <div class="impact-card">
+        <svg class="impact-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="#c9a84c" stroke-width="1"/>
+          <path d="M20 8 C20 8 12 16 12 22 C12 27 15.6 31 20 31 C24.4 31 28 27 28 22 C28 16 20 8 20 8Z" stroke="#c9a84c" stroke-width="1" fill="none"/>
+          <path d="M20 31 L20 20 M20 20 L14 24 M20 20 L26 24" stroke="#c9a84c" stroke-width="0.8"/>
+        </svg>
+        <div class="impact-card-title">Carbon Sequestration</div>
+        <p>Hemp absorbs CO₂ at 4× the rate of forests. Our cultivation and product programmes permanently lock carbon into building materials, textiles, and composite parts.</p>
+      </div>
+      <div class="impact-card">
+        <svg class="impact-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="#c9a84c" stroke-width="1"/>
+          <path d="M10 28 L20 12 L30 28 Z" stroke="#c9a84c" stroke-width="1" fill="none"/>
+          <circle cx="20" cy="20" r="4" stroke="#c9a84c" stroke-width="0.8"/>
+        </svg>
+        <div class="impact-card-title">Circular Materials</div>
+        <p>Every gram of the hemp plant is usable — fibre, hurd, pollen, root. We design processes that generate zero industrial waste and maximum material recovery.</p>
+      </div>
+      <div class="impact-card">
+        <svg class="impact-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="#c9a84c" stroke-width="1"/>
+          <path d="M13 20 C13 16 16 13 20 13 C24 13 27 16 27 20 C27 24 24 27 20 27" stroke="#c9a84c" stroke-width="1"/>
+          <path d="M20 27 L16 24 M20 27 L20 31" stroke="#c9a84c" stroke-width="0.8"/>
+        </svg>
+        <div class="impact-card-title">Rural Regeneration</div>
+        <p>Hemp farming revitalises rural economies. Our education and cross-border programmes create durable livelihoods for farmers in Hungary and across the region.</p>
+      </div>
+      <div class="impact-card">
+        <svg class="impact-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="#c9a84c" stroke-width="1"/>
+          <rect x="13" y="13" width="14" height="14" stroke="#c9a84c" stroke-width="1" fill="none"/>
+          <path d="M13 20 L27 20 M20 13 L20 27" stroke="#c9a84c" stroke-width="0.8"/>
+        </svg>
+        <div class="impact-card-title">Petrochemical Displacement</div>
+        <p>From biodegradable plastics to natural insulation, our products directly substitute fossil-derived materials across construction, automotive, and defence sectors.</p>
+      </div>
+      <div class="impact-card">
+        <svg class="impact-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="#c9a84c" stroke-width="1"/>
+          <path d="M20 10 L20 30 M14 14 L20 10 L26 14 M14 26 L20 30 L26 26" stroke="#c9a84c" stroke-width="1"/>
+        </svg>
+        <div class="impact-card-title">Gender & Equity</div>
+        <p>Our women empowerment programmes and inclusive education initiatives ensure the benefits of the hemp economy are distributed equitably across communities.</p>
+      </div>
+      <div class="impact-card">
+        <svg class="impact-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="18" stroke="#c9a84c" stroke-width="1"/>
+          <circle cx="20" cy="20" r="7" stroke="#c9a84c" stroke-width="1"/>
+          <path d="M20 13 L20 8 M20 27 L20 32 M13 20 L8 20 M27 20 L32 20" stroke="#c9a84c" stroke-width="0.8"/>
+        </svg>
+        <div class="impact-card-title">Global Policy Impact</div>
+        <p>We work at government level to establish regulatory frameworks that unlock the hemp industry's potential across the EU and in developing economies worldwide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GRANTS -->
+<section class="grants" id="grants">
+  <div class="grants-inner">
+    <div class="reveal">
+      <div class="section-label">Funding & Grants</div>
+      <h2 class="section-title">Areas of <em>grant interest</em></h2>
+      <p style="color:var(--text-dim); font-size:0.92rem; line-height:1.8; max-width:600px; margin-top:1rem;">
+        Planetary Assets Zrt actively pursues European and international funding for programmes aligned with climate action, circular economy, rural development, and innovation. Our projects span the following thematic areas:
+      </p>
+    </div>
+    <div class="grants-grid reveal">
+      <div class="grant-card">
+        <div class="grant-cat">Infrastructure</div>
+        <div class="grant-title">Brownfield Regeneration & Green Energy</div>
+        <p class="grant-desc">Restoration of industrial heritage sites, integration of alternative energy sources, and energy-efficiency upgrades aligned with EU Green Deal targets.</p>
+      </div>
+      <div class="grant-card">
+        <div class="grant-cat">Innovation</div>
+        <div class="grant-title">Hemp Fibre Product Development</div>
+        <p class="grant-desc">R&D for automotive composites, defence textiles, biodegradable plastics, construction products, and cellulose-based paper manufacturing.</p>
+      </div>
+      <div class="grant-card">
+        <div class="grant-cat">Innovation</div>
+        <div class="grant-title">Hemp Hurd & Powder Applications</div>
+        <p class="grant-desc">Development of acoustic highway panels, hempwood, construction product families, and novel applications for hemp powder by-products.</p>
+      </div>
+      <div class="grant-card">
+        <div class="grant-cat">Education</div>
+        <div class="grant-title">Cross-Border Agricultural Programmes</div>
+        <p class="grant-desc">Farmer training, climate action cooperation, and knowledge exchange connecting growers, researchers, and industry across borders.</p>
+      </div>
+      <div class="grant-card">
+        <div class="grant-cat">Education</div>
+        <div class="grant-title">University & School Integration</div>
+        <p class="grant-desc">Curriculum development, experimental classroom programmes, and industry–academia partnerships advancing industrial hemp education.</p>
+      </div>
+      <div class="grant-card">
+        <div class="grant-cat">Policy</div>
+        <div class="grant-title">Regulatory Framework Development</div>
+        <p class="grant-desc">Government-level collaboration to establish hemp standards, accelerator programmes, and circular economy support for less-developed regions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-text reveal">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Let's build the <em>hemp economy</em> together</h2>
+      <div class="gold-divider"></div>
+      <p>
+        Whether you are an investor, a grant body, a research institution, a government agency, or a fellow entrepreneur in the hemp space — we want to hear from you.
+      </p>
+      <p>
+        Planetary Assets Zrt is actively seeking partners, co-applicants for EU grant programmes, and institutional collaborators across all four of our pillars.
+      </p>
+      <div class="contact-detail">
+        <span class="contact-detail-label">Company</span>
+        <span class="contact-detail-value">Planetary Assets Zártkörűen Működő Részvénytársaság</span>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-detail-label">Country</span>
+        <span class="contact-detail-value">Hungary (Magyarország)</span>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-detail-label">Focus</span>
+        <span class="contact-detail-value">Industrial Hemp — Infrastructure, Products, Education, Policy</span>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <form action="https://formspree.io/f/xkopjavn" method="POST">
+        <input type="hidden" name="_next" value="https://planetaryassets.org/thank-you.html">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-firstname">First Name</label>
+            <input type="text" id="f-firstname" name="first_name" placeholder="Jane">
+          </div>
+          <div class="form-group">
+            <label for="f-lastname">Last Name</label>
+            <input type="text" id="f-lastname" name="last_name" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="f-email">Email *</label>
+          <input type="email" id="f-email" name="email" placeholder="jane@organisation.com" required>
+        </div>
+        <div class="form-group">
+          <label for="f-org">Organisation</label>
+          <input type="text" id="f-org" name="organisation" placeholder="Your company or institution">
+        </div>
+        <div class="form-group">
+          <label for="f-interest">Area of Interest</label>
+          <select id="f-interest" name="area_of_interest">
+            <option value="">Select a pillar…</option>
+            <option>Infrastructure &amp; Factory Development</option>
+            <option>Product R&amp;D &amp; Innovation</option>
+            <option>Education &amp; Knowledge Exchange</option>
+            <option>Policy &amp; Regulation</option>
+            <option>Investment &amp; Partnership</option>
+            <option>Grant Co-application</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="f-message">Message *</label>
+          <textarea id="f-message" name="message" placeholder="Tell us about your interest or proposal…" required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Planetary <span>Assets</span> Zrt</div>
+  <div class="footer-copy">© 2026 Planetary Assets Zártkörűen Működő Részvénytársaság. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#services">Verticals</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav background on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      nav.style.background = 'rgba(10,14,26,0.97)';
+      nav.style.backdropFilter = 'blur(12px)';
+      nav.style.borderBottom = '1px solid rgba(201,168,76,0.08)';
+    } else {
+      nav.style.background = 'linear-gradient(to bottom, rgba(10,14,26,0.95) 0%, transparent 100%)';
+      nav.style.backdropFilter = 'blur(2px)';
+      nav.style.borderBottom = 'none';
+    }
+  });
+
+
+  // Formspree contact form
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('formSubmit');
+    if (!btn) return;
+    btn.addEventListener('click', async function() {
+      var success = document.getElementById('formSuccess');
+      var errorDiv = document.getElementById('formError');
+      var data = {
+        first_name: document.getElementById('f-firstname').value,
+        last_name: document.getElementById('f-lastname').value,
+        email: document.getElementById('f-email').value,
+        organisation: document.getElementById('f-org').value,
+        area_of_interest: document.getElementById('f-interest').value,
+        message: document.getElementById('f-message').value,
+      };
+      if (!data.email || !data.message) {
+        errorDiv.textContent = 'Please fill in at least your email and message.';
+        errorDiv.style.display = 'block';
+        return;
+      }
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      success.style.display = 'none';
+      errorDiv.style.display = 'none';
+      try {
+        var res = await fetch('https://formspree.io/f/xkopjavn', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (res.ok) {
+          success.style.display = 'block';
+          btn.textContent = 'Sent!';
+          document.getElementById('f-firstname').value = '';
+          document.getElementById('f-lastname').value = '';
+          document.getElementById('f-email').value = '';
+          document.getElementById('f-org').value = '';
+          document.getElementById('f-interest').value = '';
+          document.getElementById('f-message').value = '';
+        } else {
+          throw new Error();
+        }
+      } catch(e) {
+        errorDiv.style.display = 'block';
+        btn.textContent = 'Send Message';
+        btn.disabled = false;
+      }
+    });
+  });
+  // Pillar hover stagger
+  document.querySelectorAll('.pillar').forEach((p, i) => {
+    p.style.transitionDelay = `${i * 0.05}s`;
+  });
+</script>
+
+</body>
+</html>

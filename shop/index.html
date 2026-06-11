@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hempy People Marketplace</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,700&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ivory:#f7f4ed; --warm:#faf8f2; --earth:#1e1c16; --earth2:#2e2c24;
+  --hemp:#6b9a3a; --hemp-light:#8fc054; --hemp-pale:#e8f2d8; --hemp-dark:#3a5a18;
+  --amber:#c08028; --amber-pale:#f5e8c8;
+  --muted:#7a7868; --muted2:#a8a898;
+  --border:rgba(107,154,58,0.14); --border-dark:rgba(255,255,255,0.07);
+  --card:#ffffff; --carbon-dark:#0e1a08; --carbon-green:#5aaa28;
+  --r:14px; --r-sm:8px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--ivory);color:var(--earth);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;}
+.view{display:none;} .view.active{display:block;}
+
+/* NAV */
+.top-nav{position:sticky;top:0;z-index:100;background:rgba(247,244,237,0.96);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);height:64px;display:flex;align-items:center;padding:0 40px;gap:24px;}
+.nav-brand{font-family:'Fraunces',serif;font-size:22px;font-weight:900;cursor:pointer;flex-shrink:0;letter-spacing:-0.5px;}
+.nav-brand .g{color:var(--hemp);}
+.nav-cats{display:flex;gap:4px;flex:1;overflow:hidden;}
+.nav-cat{padding:6px 13px;border-radius:20px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;color:var(--muted);transition:all .2s;white-space:nowrap;}
+.nav-cat:hover{background:var(--hemp-pale);color:var(--hemp-dark);}
+.nav-cat.active{background:var(--hemp);color:white;}
+.nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.nbtn{padding:8px 14px;border-radius:var(--r-sm);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;border:none;}
+.nbtn-ghost{background:transparent;border:1px solid var(--border);color:var(--muted);}
+.nbtn-ghost:hover{border-color:var(--hemp);color:var(--hemp-dark);}
+.nbtn-solid{background:var(--earth);color:white;}
+.nbtn-solid:hover{background:var(--hemp-dark);}
+.cart-icon{position:relative;cursor:pointer;font-size:22px;transition:transform .2s;}
+.cart-icon:hover{transform:scale(1.1);}
+.cart-bubble{position:absolute;top:-5px;right:-8px;width:17px;height:17px;background:var(--hemp);border-radius:50%;font-family:'DM Mono',monospace;font-size:9px;color:white;display:flex;align-items:center;justify-content:center;}
+
+/* HERO */
+.hero{background:var(--earth);padding:72px 40px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(107,154,58,0.08),transparent 70%);top:-200px;right:-100px;pointer-events:none;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(107,154,58,0.12);border:1px solid rgba(107,154,58,0.25);padding:6px 14px;border-radius:20px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--hemp-light);margin-bottom:24px;}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(40px,5vw,68px);font-weight:900;line-height:1.0;letter-spacing:-2px;color:var(--ivory);margin-bottom:20px;}
+.hero-title .it{font-style:italic;color:var(--hemp-light);}
+.hero-title .dim{color:rgba(247,244,237,0.35);font-weight:300;font-size:.6em;letter-spacing:-1px;}
+.hero-sub{font-size:15px;line-height:1.8;color:rgba(247,244,237,0.45);max-width:440px;margin-bottom:36px;font-weight:300;}
+.hero-actions{display:flex;gap:12px;align-items:center;margin-bottom:40px;}
+.hero-cta{background:var(--hemp);color:var(--earth);padding:14px 28px;border-radius:var(--r-sm);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;font-weight:500;transition:all .25s;}
+.hero-cta:hover{background:var(--hemp-light);transform:translateY(-2px);}
+.hero-link{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(247,244,237,0.35);cursor:pointer;transition:color .2s;background:none;border:none;}
+.hero-link:hover{color:var(--hemp-light);}
+.hero-stats{display:flex;gap:32px;}
+.hs-val{font-family:'Fraunces',serif;font-size:28px;font-weight:700;color:var(--ivory);letter-spacing:-1px;line-height:1;}
+.hs-lab{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(247,244,237,0.25);margin-top:4px;}
+
+/* CARBON ORB */
+.carbon-orb{background:var(--carbon-dark);border:1px solid rgba(90,170,40,0.2);border-radius:20px;padding:32px;text-align:center;position:relative;overflow:hidden;}
+.carbon-orb::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:240px;height:240px;background:radial-gradient(circle,rgba(90,170,40,0.06),transparent 70%);}
+.orb-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--carbon-green);margin-bottom:20px;}
+.orb-emoji{font-size:56px;display:block;margin-bottom:16px;animation:breathe 4s ease-in-out infinite;}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.orb-num{font-family:'Fraunces',serif;font-size:52px;font-weight:900;color:#9de060;letter-spacing:-3px;line-height:1;}
+.orb-unit{font-family:'DM Mono',monospace;font-size:10px;color:rgba(157,224,96,0.4);letter-spacing:2px;margin-top:8px;}
+.orb-bar{margin:18px 0 6px;height:5px;background:rgba(90,170,40,0.1);border-radius:3px;overflow:hidden;}
+.orb-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--hemp-dark),var(--carbon-green));border-radius:3px;transition:width 2.5s ease;position:relative;overflow:hidden;}
+.orb-bar-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);animation:shimmer 2s infinite;}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.orb-progress{font-family:'DM Mono',monospace;font-size:9px;color:rgba(157,224,96,0.3);letter-spacing:1px;}
+.orb-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;}
+.orb-gi{background:rgba(90,170,40,0.05);border:1px solid rgba(90,170,40,0.08);border-radius:10px;padding:12px;}
+.orb-gi-val{font-family:'Fraunces',serif;font-size:22px;font-weight:700;color:#9de060;line-height:1;}
+.orb-gi-lab{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.2);margin-top:4px;}
+
+/* TICKER */
+.ticker{background:var(--hemp-pale);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 0;overflow:hidden;white-space:nowrap;}
+.ticker-inner{display:inline-flex;animation:tick 28s linear infinite;}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.tick-item{display:inline-flex;align-items:center;gap:8px;padding:0 28px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--hemp-dark);}
+.tick-dot{width:4px;height:4px;border-radius:50%;background:var(--hemp);}
+
+/* SHOP SECTION */
+.shop-sec{padding:64px 40px;}
+.shop-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;}
+.shop-title{font-family:'Fraunces',serif;font-size:clamp(30px,3.5vw,48px);font-weight:900;letter-spacing:-1.5px;line-height:1.05;}
+.shop-title .it{font-style:italic;color:var(--hemp);}
+.shop-count{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);}
+.world-tabs{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap;}
+.world-tab{padding:9px 18px;border-radius:30px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border:1px solid var(--border);color:var(--muted);background:white;transition:all .25s;display:flex;align-items:center;gap:6px;}
+.world-tab:hover{border-color:var(--hemp);color:var(--hemp-dark);}
+.world-tab.active{background:var(--earth);border-color:var(--earth);color:white;}
+
+/* PRODUCT GRID */
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.prod-card{background:var(--card);border:1px solid rgba(0,0,0,0.06);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:all .35s cubic-bezier(.4,0,.2,1);}
+.prod-card:hover{transform:translateY(-5px);box-shadow:0 16px 48px rgba(30,28,22,.1);border-color:var(--border);}
+.prod-img{height:190px;display:flex;align-items:center;justify-content:center;font-size:64px;position:relative;overflow:hidden;}
+.prod-img-emoji{transition:transform .4s ease;position:relative;z-index:2;}
+.prod-card:hover .prod-img-emoji{transform:scale(1.08);}
+.co2-pill{position:absolute;bottom:10px;left:10px;background:var(--carbon-dark);border:1px solid rgba(90,170,40,0.3);border-radius:8px;padding:5px 10px;display:flex;align-items:center;gap:6px;z-index:3;transition:all .3s;}
+.prod-card:hover .co2-pill{border-color:rgba(90,170,40,0.6);box-shadow:0 0 14px rgba(90,170,40,0.15);}
+.co2-dot{width:5px;height:5px;border-radius:50%;background:var(--carbon-green);box-shadow:0 0 5px var(--carbon-green);animation:blink 2.5s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.co2-txt{font-family:'DM Mono',monospace;font-size:10px;color:#9de060;letter-spacing:0.3px;font-weight:500;}
+.sup-tag{position:absolute;top:10px;right:10px;background:rgba(247,244,237,0.92);border-radius:6px;padding:4px 8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.5px;color:var(--earth2);z-index:3;cursor:pointer;transition:background .2s;}
+.sup-tag:hover{background:var(--hemp-pale);color:var(--hemp-dark);}
+.prod-body{padding:15px 17px 17px;}
+.prod-cat{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--hemp);margin-bottom:5px;}
+.prod-name{font-family:'Fraunces',serif;font-size:17px;font-weight:700;line-height:1.2;letter-spacing:-0.3px;margin-bottom:5px;}
+.prod-desc{font-size:12px;line-height:1.55;color:var(--muted);font-weight:300;margin-bottom:13px;}
+.prod-footer{display:flex;align-items:center;justify-content:space-between;}
+.prod-price{font-family:'Fraunces',serif;font-size:22px;font-weight:900;letter-spacing:-0.5px;}
+.atc{background:var(--earth);color:white;border:none;border-radius:var(--r-sm);padding:9px 15px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.atc:hover{background:var(--hemp-dark);transform:scale(1.03);}
+.atc.done{background:var(--hemp);}
+
+/* SUPPLIERS SECTION */
+.sup-sec{padding:64px 40px;background:var(--earth2);}
+.sup-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--hemp-light);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.sup-eyebrow::before{content:'';width:30px;height:1px;background:var(--hemp);}
+.sup-title{font-family:'Fraunces',serif;font-size:clamp(28px,3vw,44px);font-weight:900;letter-spacing:-1.5px;color:var(--ivory);margin-bottom:36px;}
+.sup-title .it{font-style:italic;color:var(--hemp-light);}
+.sup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.sup-card{background:rgba(255,255,255,0.04);border:1px solid var(--border-dark);border-radius:var(--r);padding:26px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden;}
+.sup-card::before{content:'';position:absolute;inset:0;background:rgba(107,154,58,0.04);opacity:0;transition:opacity .3s;}
+.sup-card:hover{border-color:rgba(107,154,58,0.3);transform:translateY(-3px);}
+.sup-card:hover::before{opacity:1;}
+.sc-top{display:flex;align-items:center;gap:14px;margin-bottom:14px;}
+.sc-av{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.sc-name{font-size:15px;font-weight:600;color:var(--ivory);}
+.sc-loc{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:rgba(247,244,237,0.3);margin-top:2px;}
+.sc-ver{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--hemp-light);background:rgba(107,154,58,0.1);border:1px solid rgba(107,154,58,0.2);padding:3px 8px;border-radius:6px;flex-shrink:0;}
+.sc-desc{font-size:13px;line-height:1.6;color:rgba(247,244,237,0.38);font-weight:300;margin-bottom:16px;}
+.sc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
+.sc-stat{text-align:center;background:rgba(255,255,255,0.03);border-radius:8px;padding:8px 4px;}
+.sc-sv{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:var(--hemp-light);line-height:1;}
+.sc-sl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.5px;color:rgba(255,255,255,0.18);text-transform:uppercase;margin-top:3px;}
+.sc-co2{display:flex;align-items:center;gap:8px;background:var(--carbon-dark);border:1px solid rgba(90,170,40,0.15);border-radius:8px;padding:8px 12px;}
+.sc-co2-val{font-family:'DM Mono',monospace;font-size:11px;color:#9de060;flex:1;}
+.sc-view{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--hemp-light);background:none;border:none;cursor:pointer;transition:color .2s;}
+.sc-view:hover{color:white;}
+
+/* JOIN BANNER */
+.join-banner{background:var(--hemp-pale);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px;display:flex;align-items:center;justify-content:space-between;gap:40px;}
+.jb-title{font-family:'Fraunces',serif;font-size:28px;font-weight:900;letter-spacing:-1px;margin-bottom:6px;}
+.jb-sub{font-size:14px;color:var(--muted);font-weight:300;line-height:1.6;max-width:480px;}
+.jb-cta{background:var(--earth);color:white;padding:14px 28px;border-radius:var(--r-sm);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;white-space:nowrap;transition:background .25s;font-weight:500;}
+.jb-cta:hover{background:var(--hemp-dark);}
+
+/* SUPPLIER PROFILE VIEW */
+.sup-hero{background:var(--earth);padding:40px;display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;border-bottom:1px solid var(--border-dark);}
+.sup-av-big{width:80px;height:80px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:40px;}
+.sup-name-big{font-family:'Fraunces',serif;font-size:30px;font-weight:900;letter-spacing:-1px;color:var(--ivory);}
+.sup-meta{display:flex;align-items:center;gap:12px;margin-top:6px;}
+.sup-badge{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--hemp-light);background:rgba(107,154,58,0.12);border:1px solid rgba(107,154,58,0.25);padding:4px 10px;border-radius:6px;}
+.sup-loc-txt{font-family:'DM Mono',monospace;font-size:10px;color:rgba(247,244,237,0.3);letter-spacing:1px;}
+.sup-stats-row{display:flex;gap:28px;}
+.sup-sv{font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:var(--hemp-light);letter-spacing:-1px;line-height:1;}
+.sup-sl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:rgba(247,244,237,0.25);text-transform:uppercase;margin-top:3px;}
+.sup-content{padding:40px;display:grid;grid-template-columns:1fr 280px;gap:36px;align-items:start;}
+.sup-prod-title{font-family:'Fraunces',serif;font-size:26px;font-weight:900;letter-spacing:-1px;margin-bottom:22px;}
+.sup-prod-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:28px;}
+.sup-sidebar{display:flex;flex-direction:column;gap:14px;}
+.sup-card-box{background:white;border:1px solid rgba(0,0,0,0.06);border-radius:var(--r);padding:20px;}
+.sup-card-ttl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);margin-bottom:12px;}
+.sup-about-txt{font-size:13px;line-height:1.7;color:var(--muted);font-weight:300;}
+.sup-co2-block{background:var(--carbon-dark);border:1px solid rgba(90,170,40,0.15);border-radius:var(--r);padding:20px;text-align:center;}
+.scb-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--carbon-green);margin-bottom:10px;}
+.scb-num{font-family:'Fraunces',serif;font-size:40px;font-weight:900;color:#9de060;letter-spacing:-2px;line-height:1;}
+.scb-unit{font-family:'DM Mono',monospace;font-size:9px;color:rgba(157,224,96,0.4);letter-spacing:1.5px;margin-top:6px;}
+
+/* DASHBOARD VIEW */
+.dash-layout{display:grid;grid-template-columns:210px 1fr;min-height:calc(100vh - 64px);}
+.dash-sb{background:var(--earth);padding:20px 14px;border-right:1px solid var(--border-dark);}
+.dash-brand{font-family:'Fraunces',serif;font-size:18px;font-weight:900;color:var(--hemp-light);padding:8px 12px;margin-bottom:22px;}
+.dash-ni{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:var(--r-sm);cursor:pointer;transition:all .2s;font-size:13px;color:rgba(247,244,237,0.4);margin-bottom:4px;}
+.dash-ni:hover{background:rgba(255,255,255,0.05);color:var(--ivory);}
+.dash-ni.active{background:rgba(107,154,58,0.12);color:var(--hemp-light);}
+.dash-ni-icon{font-size:15px;width:20px;text-align:center;}
+.dash-main{background:var(--ivory);padding:36px;overflow-y:auto;}
+.dash-hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;}
+.dash-title{font-family:'Fraunces',serif;font-size:30px;font-weight:900;letter-spacing:-1.5px;}
+.dash-sub{font-size:13px;color:var(--muted);margin-top:4px;font-weight:300;}
+.dash-date{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;color:var(--muted2);text-transform:uppercase;}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px;}
+.kpi{background:white;border:1px solid rgba(0,0,0,0.06);border-radius:var(--r);padding:20px;position:relative;overflow:hidden;transition:box-shadow .2s;}
+.kpi:hover{box-shadow:0 8px 24px rgba(30,28,22,.08);}
+.kpi::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;border-radius:0 0 var(--r) var(--r);}
+.kpi.gr::after{background:var(--hemp);}
+.kpi.am::after{background:var(--amber);}
+.kpi.bl::after{background:#4a7ac8;}
+.kpi.ca::after{background:var(--carbon-green);}
+.kpi-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted2);margin-bottom:8px;}
+.kpi-val{font-family:'Fraunces',serif;font-size:34px;font-weight:900;letter-spacing:-1.5px;line-height:1;}
+.kpi-trend{font-family:'DM Mono',monospace;font-size:10px;margin-top:5px;display:flex;align-items:center;gap:4px;}
+.kpi-trend.up{color:var(--hemp);}
+.dash-g2{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-bottom:20px;}
+.dash-g3{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.dpanel{background:white;border:1px solid rgba(0,0,0,0.06);border-radius:var(--r);padding:22px;}
+.ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+.pt{font-family:'Fraunces',serif;font-size:18px;font-weight:700;letter-spacing:-0.5px;}
+.pa{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--hemp);cursor:pointer;}
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:150px;padding-bottom:24px;position:relative;border-bottom:1px solid rgba(0,0,0,0.06);}
+.bar-chart::before{content:'';position:absolute;left:0;right:0;bottom:24px;top:0;background:repeating-linear-gradient(to bottom,transparent,transparent calc(25% - 0.5px),rgba(0,0,0,0.04) calc(25% - 0.5px),rgba(0,0,0,0.04) 25%);}
+.bc{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;height:100%;justify-content:flex-end;}
+.b{width:100%;border-radius:4px 4px 0 0;transition:all .5s cubic-bezier(.4,0,.2,1);cursor:pointer;}
+.b.hb{background:linear-gradient(to top,var(--hemp-dark),var(--hemp-light));}
+.b.hi{box-shadow:0 0 0 2px var(--hemp);}
+.bl{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.5px;color:var(--muted2);text-align:center;}
+.pt-table{width:100%;border-collapse:collapse;}
+.pt-table th{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2);text-align:left;padding:0 10px 10px;border-bottom:1px solid rgba(0,0,0,0.06);font-weight:400;}
+.pt-table td{padding:12px 10px;border-bottom:1px solid rgba(0,0,0,0.04);font-size:13px;vertical-align:middle;}
+.pt-table tr:last-child td{border-bottom:none;}
+.pt-table tr:hover td{background:rgba(107,154,58,0.03);}
+.pt-prod{display:flex;align-items:center;gap:9px;}
+.pt-em{font-size:18px;}
+.pt-nm{font-weight:500;font-size:13px;}
+.pt-ct{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted2);letter-spacing:.5px;}
+.pt-bw{display:flex;align-items:center;gap:7px;}
+.pt-bb{flex:1;height:4px;background:rgba(0,0,0,0.06);border-radius:2px;overflow:hidden;}
+.pt-bf{height:100%;border-radius:2px;background:var(--hemp);}
+.pt-bv{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);width:34px;text-align:right;}
+.bg{background:var(--hemp-pale);color:var(--hemp-dark);padding:3px 8px;border-radius:6px;font-family:'DM Mono',monospace;font-size:9px;}
+.ba{background:var(--amber-pale);color:var(--amber);padding:3px 8px;border-radius:6px;font-family:'DM Mono',monospace;font-size:9px;}
+.ord-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.05);}
+.ord-item:last-child{border-bottom:none;}
+.ord-em{font-size:20px;}
+.ord-nm{font-size:13px;font-weight:500;}
+.ord-mt{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);margin-top:2px;}
+.ord-am{font-family:'Fraunces',serif;font-size:16px;font-weight:700;}
+.ord-co{font-family:'DM Mono',monospace;font-size:10px;color:var(--hemp);text-align:right;}
+.fb-item{padding:12px 0;border-bottom:1px solid rgba(0,0,0,0.05);}
+.fb-item:last-child{border-bottom:none;}
+.fb-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
+.fb-stars{color:var(--amber);font-size:12px;letter-spacing:1px;}
+.fb-prod{font-family:'DM Mono',monospace;font-size:9px;color:var(--hemp);letter-spacing:1px;}
+.fb-txt{font-size:12px;color:var(--muted);line-height:1.5;font-weight:300;}
+.fb-auth{font-family:'DM Mono',monospace;font-size:9px;color:var(--muted2);margin-top:4px;letter-spacing:0.5px;}
+
+/* APPLY VIEW */
+.apply-sec{max-width:660px;margin:0 auto;padding:64px 24px;}
+.apply-ey{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--hemp);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.apply-ey::before{content:'';width:30px;height:1px;background:var(--hemp);}
+.apply-title{font-family:'Fraunces',serif;font-size:clamp(34px,4vw,50px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:14px;}
+.apply-title .it{font-style:italic;color:var(--hemp);}
+.apply-sub{font-size:15px;line-height:1.8;color:var(--muted);font-weight:300;margin-bottom:40px;}
+.perks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:40px;}
+.perk{background:white;border:1px solid rgba(0,0,0,0.06);border-radius:var(--r);padding:16px;display:flex;gap:12px;align-items:flex-start;}
+.perk-icon{font-size:20px;flex-shrink:0;}
+.perk-ttl{font-size:13px;font-weight:500;margin-bottom:3px;}
+.perk-desc{font-size:12px;color:var(--muted);font-weight:300;line-height:1.5;}
+.aform{display:flex;flex-direction:column;gap:18px;}
+.fr2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fg{display:flex;flex-direction:column;gap:7px;}
+.flbl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.finp,.fsel,.ftxt{background:white;border:1px solid rgba(0,0,0,0.1);border-radius:var(--r-sm);padding:12px 15px;color:var(--earth);font-family:'Outfit',sans-serif;font-size:14px;font-weight:300;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.finp:focus,.fsel:focus,.ftxt:focus{border-color:var(--hemp);}
+.finp::placeholder,.ftxt::placeholder{color:var(--muted2);}
+.ftxt{resize:vertical;min-height:90px;line-height:1.6;}
+.fsel{cursor:pointer;}
+.aterm{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:var(--muted);font-weight:300;line-height:1.5;}
+.achk{margin-top:2px;accent-color:var(--hemp);width:16px;height:16px;flex-shrink:0;}
+.asub{background:var(--earth);color:white;border:none;border-radius:var(--r-sm);padding:16px 28px;font-family:'DM Mono',monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .25s;font-weight:500;}
+.asub:hover{background:var(--hemp-dark);}
+
+/* FOOTER */
+.site-footer{background:var(--earth2);padding:48px 40px 32px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;}
+.sf-logo{font-family:'Fraunces',serif;font-size:22px;font-weight:900;color:var(--ivory);letter-spacing:-0.5px;margin-bottom:10px;}
+.sf-logo span{color:var(--hemp-light);}
+.sf-desc{font-size:13px;line-height:1.7;color:rgba(247,244,237,0.32);font-weight:300;margin-bottom:14px;max-width:250px;}
+.sf-carbon{display:inline-flex;align-items:center;gap:6px;background:rgba(90,170,40,0.07);border:1px solid rgba(90,170,40,0.12);padding:6px 12px;border-radius:6px;font-family:'DM Mono',monospace;font-size:9px;color:var(--hemp-light);letter-spacing:1px;}
+.sf-ct{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(247,244,237,0.28);margin-bottom:12px;}
+.sf-links{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.sf-links a{font-size:13px;color:rgba(247,244,237,0.32);text-decoration:none;font-weight:300;transition:color .2s;}
+.sf-links a:hover{color:var(--ivory);}
+.sf-bot{grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.05);padding-top:18px;display:flex;justify-content:space-between;}
+.sf-copy{font-family:'DM Mono',monospace;font-size:9px;color:rgba(247,244,237,0.18);letter-spacing:1px;}
+
+/* CART */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:200;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(3px);}
+.cart-overlay.open{opacity:1;pointer-events:all;}
+.cart-drawer{position:fixed;top:0;right:-440px;width:440px;height:100vh;background:var(--warm);z-index:201;transition:right .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,0.15);}
+.cart-drawer.open{right:0;}
+.cd-hdr{padding:26px;border-bottom:1px solid rgba(0,0,0,0.08);display:flex;justify-content:space-between;align-items:center;}
+.cd-ttl{font-family:'Fraunces',serif;font-size:26px;font-weight:900;letter-spacing:-0.5px;}
+.cd-cls{width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,0.06);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s;}
+.cd-cls:hover{background:rgba(0,0,0,0.1);}
+.cd-items{flex:1;overflow-y:auto;padding:18px 26px;scrollbar-width:thin;}
+.cd-item{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid rgba(0,0,0,0.06);}
+.cd-img{width:54px;height:54px;border-radius:10px;background:var(--hemp-pale);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.cd-nm{font-size:14px;font-weight:500;}
+.cd-sup{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted2);margin-top:2px;}
+.cd-co{font-family:'DM Mono',monospace;font-size:10px;color:var(--hemp);margin-top:2px;}
+.cd-pr{font-family:'Fraunces',serif;font-size:18px;font-weight:700;margin-top:4px;}
+.cd-rm{background:none;border:none;color:var(--muted2);cursor:pointer;font-size:16px;transition:color .2s;align-self:flex-start;}
+.cd-rm:hover{color:#e05a5a;}
+.cd-ftr{padding:18px 26px 26px;border-top:1px solid rgba(0,0,0,0.08);}
+.cd-co2b{background:var(--carbon-dark);border:1px solid rgba(90,170,40,0.2);border-radius:var(--r-sm);padding:13px 15px;display:flex;align-items:center;gap:12px;margin-bottom:13px;}
+.cd-co2v{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:#9de060;}
+.cd-co2l{font-family:'DM Mono',monospace;font-size:9px;color:var(--carbon-green);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;}
+.cd-tr{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px;}
+.cd-tl{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);}
+.cd-tv{font-family:'Fraunces',serif;font-size:26px;font-weight:900;letter-spacing:-1px;}
+.cd-chk{width:100%;background:var(--earth);color:white;border:none;border-radius:var(--r-sm);padding:15px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .25s;font-weight:500;}
+.cd-chk:hover{background:var(--hemp-dark);}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--earth);color:white;padding:12px 22px;border-radius:30px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.5px;z-index:300;transition:transform .4s cubic-bezier(.4,0,.2,1);border:1px solid rgba(107,154,58,0.3);box-shadow:0 8px 28px rgba(0,0,0,0.25);white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+
+/* UTILS */
+.fade-up{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+@media(max-width:900px){
+  .top-nav{padding:0 18px;}.nav-cats{display:none;}
+  .hero{grid-template-columns:1fr;padding:36px 18px;}
+  .shop-sec{padding:36px 18px;}.prod-grid{grid-template-columns:1fr 1fr;gap:12px;}
+  .sup-sec{padding:36px 18px;}.sup-grid{grid-template-columns:1fr;}
+  .join-banner{flex-direction:column;padding:26px 18px;}
+  .site-footer{grid-template-columns:1fr;padding:28px 18px;gap:20px;}
+  .dash-layout{grid-template-columns:1fr;}.dash-sb{display:none;}
+  .kpi-grid{grid-template-columns:1fr 1fr;}.dash-g2{grid-template-columns:1fr;}
+  .cart-drawer{width:100%;right:-100%;}
+  .sup-content{grid-template-columns:1fr;padding:24px 18px;}
+  .sup-prod-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav" id="top-nav">
+  <div class="nav-brand" onclick="showView('storefront')">Hempy <span class="g">People</span></div>
+  <div class="nav-cats">
+    <div class="nav-cat active" onclick="filterWorld('all',this)">🌿 All</div>
+    <div class="nav-cat" onclick="filterWorld('lifestyle',this)">🧘 Lifestyle</div>
+    <div class="nav-cat" onclick="filterWorld('gardening',this)">🌱 Gardening</div>
+    <div class="nav-cat" onclick="filterWorld('food',this)">🍃 Food &amp; Wellness</div>
+    <div class="nav-cat" onclick="filterWorld('materials',this)">🧱 Materials</div>
+  </div>
+  <div class="nav-right">
+    <button class="nbtn nbtn-ghost" onclick="showView('apply')">Become a Supplier</button>
+    <button class="nbtn nbtn-solid" onclick="showView('dashboard')">Supplier Login</button>
+    <div class="cart-icon" onclick="toggleCart()">🛒<div class="cart-bubble" id="cart-count">0</div></div>
+  </div>
+</nav>
+
+<!-- STOREFRONT -->
+<div class="view active" id="view-storefront">
+  <section class="hero">
+    <div>
+      <div class="hero-badge">🌿 Hemp marketplace · 12 verified suppliers</div>
+      <h1 class="hero-title">The world's<br><span class="it">hemp</span><br><span class="dim">in one place.</span></h1>
+      <p class="hero-sub">Lifestyle, food, gardening, materials — everything made from industrial hemp, from verified suppliers worldwide. Every purchase CO₂ tracked.</p>
+      <div class="hero-actions">
+        <button class="hero-cta" onclick="document.getElementById('shop-anchor').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+        <button class="hero-link" onclick="showView('apply')">Sell with us →</button>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hs-val">12</div><div class="hs-lab">Suppliers</div></div>
+        <div><div class="hs-val">84+</div><div class="hs-lab">Products</div></div>
+        <div><div class="hs-val">47</div><div class="hs-lab">Countries</div></div>
+      </div>
+    </div>
+    <div class="carbon-orb">
+      <div class="orb-label">🌍 Community Carbon Score</div>
+      <span class="orb-emoji">🌿</span>
+      <div class="orb-num" id="orb-num">0</div>
+      <div class="orb-unit">kg CO₂ sequestered</div>
+      <div class="orb-bar"><div class="orb-bar-fill" id="orb-bar"></div></div>
+      <div class="orb-progress">67% towards 50,000kg community goal</div>
+      <div class="orb-grid">
+        <div class="orb-gi"><div class="orb-gi-val">847</div><div class="orb-gi-lab">Orders</div></div>
+        <div class="orb-gi"><div class="orb-gi-val">15t</div><div class="orb-gi-lab">CO₂/ha</div></div>
+        <div class="orb-gi"><div class="orb-gi-val">12</div><div class="orb-gi-lab">Farms</div></div>
+        <div class="orb-gi"><div class="orb-gi-val">10%</div><div class="orb-gi-lab">Commission</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker"><div class="ticker-inner" id="ticker-inner"></div></div>
+
+  <section class="shop-sec" id="shop-anchor">
+    <div class="shop-head">
+      <div><h2 class="shop-title">Shop the <span class="it">hemp</span> world</h2></div>
+      <div class="shop-count" id="prod-count">Showing all 12 products</div>
+    </div>
+    <div class="world-tabs">
+      <div class="world-tab active" onclick="filterWorld('all',this)">🌿 All</div>
+      <div class="world-tab" onclick="filterWorld('lifestyle',this)">🧘 Lifestyle</div>
+      <div class="world-tab" onclick="filterWorld('gardening',this)">🌱 Gardening</div>
+      <div class="world-tab" onclick="filterWorld('food',this)">🍃 Food &amp; Wellness</div>
+      <div class="world-tab" onclick="filterWorld('materials',this)">🧱 Materials</div>
+    </div>
+    <div class="prod-grid" id="prod-grid"></div>
+  </section>
+
+  <section class="sup-sec">
+    <div class="sup-eyebrow">Our Network</div>
+    <h2 class="sup-title">Meet the <span class="it">suppliers</span></h2>
+    <div class="sup-grid" id="sup-grid"></div>
+  </section>
+
+  <div class="join-banner">
+    <div>
+      <div class="jb-title">Are you a hemp producer? 🌿</div>
+      <p class="jb-sub">Join Hempy People Marketplace. Reach buyers in 47+ countries, get real-time analytics, and be part of the movement. Invite-only — apply to be considered.</p>
+    </div>
+    <button class="jb-cta" onclick="showView('apply')">Apply to Join</button>
+  </div>
+
+  <footer class="site-footer">
+    <div>
+      <div class="sf-logo">Hempy <span>People</span></div>
+      <p class="sf-desc">The global hemp marketplace. Verified suppliers, carbon-tracked products, community building the future of sustainable living.</p>
+      <div class="sf-carbon">🌿 Every product CO₂ verified</div>
+    </div>
+    <div>
+      <div class="sf-ct">Shop</div>
+      <ul class="sf-links"><li><a href="#">Lifestyle</a></li><li><a href="#">Gardening</a></li><li><a href="#">Food &amp; Wellness</a></li><li><a href="#">Materials</a></li></ul>
+    </div>
+    <div>
+      <div class="sf-ct">Suppliers</div>
+      <ul class="sf-links"><li><a href="#" onclick="showView('apply');return false">Apply to Join</a></li><li><a href="#" onclick="showView('dashboard');return false">Supplier Login</a></li><li><a href="#">Carbon Methodology</a></li><li><a href="#">Commission Info</a></li></ul>
+    </div>
+    <div>
+      <div class="sf-ct">Company</div>
+      <ul class="sf-links"><li><a href="/">Planetary Assets</a></li><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy</a></li></ul>
+    </div>
+    <div class="sf-bot">
+      <div class="sf-copy">© 2026 Hempy People Marketplace · planetaryassets.org/shop</div>
+      <div class="sf-copy">🌍 Carbon-tracked commerce · 10% commission</div>
+    </div>
+  </footer>
+</div>
+
+<!-- SUPPLIER PROFILE -->
+<div class="view" id="view-supplier">
+  <div class="sup-hero" id="sup-hero-content"></div>
+  <div class="sup-content">
+    <div>
+      <div class="sup-prod-title" id="sup-prod-ttl">Products</div>
+      <div class="sup-prod-grid" id="sup-prod-grid"></div>
+    </div>
+    <div class="sup-sidebar">
+      <div class="sup-card-box">
+        <div class="sup-card-ttl">About</div>
+        <div class="sup-about-txt" id="sup-about"></div>
+      </div>
+      <div class="sup-co2-block">
+        <div class="scb-lbl">🌍 Total CO₂ Sequestered</div>
+        <div class="scb-num" id="sup-co2-num"></div>
+        <div class="scb-unit">kg CO₂ · verified</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="view" id="view-dashboard">
+  <div class="dash-layout">
+    <div class="dash-sb">
+      <div class="dash-brand">🌿 Hempy</div>
+      <div class="dash-ni active"><span class="dash-ni-icon">📊</span>Overview</div>
+      <div class="dash-ni"><span class="dash-ni-icon">📦</span>Products</div>
+      <div class="dash-ni"><span class="dash-ni-icon">🛒</span>Orders</div>
+      <div class="dash-ni"><span class="dash-ni-icon">⭐</span>Reviews</div>
+      <div class="dash-ni"><span class="dash-ni-icon">🌍</span>Carbon Score</div>
+      <div class="dash-ni"><span class="dash-ni-icon">💳</span>Payouts</div>
+      <div class="dash-ni"><span class="dash-ni-icon">⚙️</span>Settings</div>
+    </div>
+    <div class="dash-main">
+      <div class="dash-hdr">
+        <div><div class="dash-title">GreenAcres Dashboard</div><div class="dash-sub">Welcome back · Budapest, Hungary 🇭🇺</div></div>
+        <div class="dash-date">April 6, 2026</div>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi gr"><div class="kpi-lbl">Revenue this month</div><div class="kpi-val">€4,284</div><div class="kpi-trend up">↑ +18% vs last month</div></div>
+        <div class="kpi am"><div class="kpi-lbl">Orders this month</div><div class="kpi-val">127</div><div class="kpi-trend up">↑ +24 orders</div></div>
+        <div class="kpi bl"><div class="kpi-lbl">Product views</div><div class="kpi-val">3,841</div><div class="kpi-trend up">↑ +12% this week</div></div>
+        <div class="kpi ca"><div class="kpi-lbl">CO₂ sequestered</div><div class="kpi-val" style="color:var(--hemp)">2,847<span style="font-size:18px;color:var(--muted2)">kg</span></div><div class="kpi-trend up" style="color:var(--hemp)">🌍 +360kg this week</div></div>
+      </div>
+      <div class="dash-g2">
+        <div class="dpanel">
+          <div class="ph"><div class="pt">Monthly Revenue</div><div class="pa">Export CSV</div></div>
+          <div class="bar-chart" id="bar-chart"></div>
+        </div>
+        <div class="dpanel">
+          <div class="ph"><div class="pt">Product Performance</div><div class="pa">View all</div></div>
+          <table class="pt-table">
+            <thead><tr><th>Product</th><th>Views</th><th>Conv.</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><div class="pt-prod"><span class="pt-em">👕</span><div><div class="pt-nm">Hemp T-Shirt</div><div class="pt-ct">Lifestyle</div></div></div></td><td><div class="pt-bw"><div class="pt-bb"><div class="pt-bf" style="width:85%"></div></div><span class="pt-bv">847</span></div></td><td style="font-family:'DM Mono',monospace;font-size:11px">4.2%</td><td><span class="bg">Active</span></td></tr>
+              <tr><td><div class="pt-prod"><span class="pt-em">🌾</span><div><div class="pt-nm">Hemp Hearts</div><div class="pt-ct">Food</div></div></div></td><td><div class="pt-bw"><div class="pt-bb"><div class="pt-bf" style="width:65%"></div></div><span class="pt-bv">612</span></div></td><td style="font-family:'DM Mono',monospace;font-size:11px">6.1%</td><td><span class="bg">Active</span></td></tr>
+              <tr><td><div class="pt-prod"><span class="pt-em">🧴</span><div><div class="pt-nm">Seed Oil</div><div class="pt-ct">Wellness</div></div></div></td><td><div class="pt-bw"><div class="pt-bb"><div class="pt-bf" style="width:48%"></div></div><span class="pt-bv">441</span></div></td><td style="font-family:'DM Mono',monospace;font-size:11px">3.8%</td><td><span class="ba">Low stock</span></td></tr>
+              <tr><td><div class="pt-prod"><span class="pt-em">🧱</span><div><div class="pt-nm">Hempcrete Kit</div><div class="pt-ct">Materials</div></div></div></td><td><div class="pt-bw"><div class="pt-bb"><div class="pt-bf" style="width:30%"></div></div><span class="pt-bv">298</span></div></td><td style="font-family:'DM Mono',monospace;font-size:11px">2.1%</td><td><span class="bg">Active</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="dash-g3">
+        <div class="dpanel">
+          <div class="ph"><div class="pt">Recent Orders</div><div class="pa">View all</div></div>
+          <div class="ord-item"><span class="ord-em">👕</span><div style="flex:1"><div class="ord-nm">Hemp T-Shirt × 2</div><div class="ord-mt">Order #4821 · Amsterdam · 2h ago</div></div><div><div class="ord-am">€76</div><div class="ord-co">+4.8kg CO₂</div></div></div>
+          <div class="ord-item"><span class="ord-em">🌾</span><div style="flex:1"><div class="ord-nm">Hemp Hearts Organic</div><div class="ord-mt">Order #4820 · Berlin · 4h ago</div></div><div><div class="ord-am">€16</div><div class="ord-co">+1.2kg CO₂</div></div></div>
+          <div class="ord-item"><span class="ord-em">🧱</span><div style="flex:1"><div class="ord-nm">Hempcrete Kit × 3</div><div class="ord-mt">Order #4819 · Lyon · Yesterday</div></div><div><div class="ord-am">€135</div><div class="ord-co">+55kg CO₂</div></div></div>
+          <div class="ord-item"><span class="ord-em">🧴</span><div style="flex:1"><div class="ord-nm">Hemp Seed Oil 500ml</div><div class="ord-mt">Order #4818 · Budapest · Yesterday</div></div><div><div class="ord-am">€24</div><div class="ord-co">+0.8kg CO₂</div></div></div>
+        </div>
+        <div class="dpanel">
+          <div class="ph"><div class="pt">Customer Feedback</div><div class="pa">View all</div></div>
+          <div class="fb-item"><div class="fb-top"><div class="fb-stars">★★★★★</div><div class="fb-prod">Hemp T-Shirt</div></div><div class="fb-txt">"Incredibly soft. Love knowing my purchase sequesters CO₂. Will buy again."</div><div class="fb-auth">Anna K. · Amsterdam · 1 day ago</div></div>
+          <div class="fb-item"><div class="fb-top"><div class="fb-stars">★★★★★</div><div class="fb-prod">Hemp Hearts</div></div><div class="fb-txt">"Best hemp protein I've found. Nutty flavor, great macros. Carbon score is a bonus."</div><div class="fb-auth">Marcus T. · Berlin · 2 days ago</div></div>
+          <div class="fb-item"><div class="fb-top"><div class="fb-stars">★★★★☆</div><div class="fb-prod">Hempcrete Kit</div></div><div class="fb-txt">"Great product, slightly slow shipping. CO₂ savings vs concrete are remarkable."</div><div class="fb-auth">Pierre M. · Lyon · 3 days ago</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- APPLY -->
+<div class="view" id="view-apply">
+  <section class="apply-sec">
+    <div class="apply-ey">Join the Platform</div>
+    <h1 class="apply-title">Sell your hemp<br><span class="it">with purpose</span></h1>
+    <p class="apply-sub">Hempy People Marketplace connects verified hemp suppliers with a global community of conscious buyers. 10% commission per sale — no monthly fees. Invite-only, applications reviewed within 5 days.</p>
+    <div class="perks">
+      <div class="perk"><span class="perk-icon">🌍</span><div><div class="perk-ttl">Carbon score per product</div><div class="perk-desc">Verified CO₂ sequestration displayed on every listing.</div></div></div>
+      <div class="perk"><span class="perk-icon">📊</span><div><div class="perk-ttl">Real-time analytics</div><div class="perk-desc">Views, conversions, revenue and feedback for all products.</div></div></div>
+      <div class="perk"><span class="perk-icon">🌿</span><div><div class="perk-ttl">Global hemp audience</div><div class="perk-desc">Buyers in 47+ countries looking specifically for hemp.</div></div></div>
+      <div class="perk"><span class="perk-icon">💰</span><div><div class="perk-ttl">10% commission only</div><div class="perk-desc">No monthly or listing fees. We earn only when you sell.</div></div></div>
+    </div>
+    <div class="aform">
+      <div class="fr2">
+        <div class="fg"><label class="flbl">Business Name</label><input class="finp" type="text" placeholder="Your company or farm name"></div>
+        <div class="fg"><label class="flbl">Contact Name</label><input class="finp" type="text" placeholder="Your full name"></div>
+      </div>
+      <div class="fr2">
+        <div class="fg"><label class="flbl">Email</label><input class="finp" type="email" placeholder="contact@yourcompany.com"></div>
+        <div class="fg"><label class="flbl">Country</label><input class="finp" type="text" placeholder="Hungary, Germany, Netherlands..."></div>
+      </div>
+      <div class="fg">
+        <label class="flbl">Product Category</label>
+        <select class="fsel">
+          <option>Select your main category</option>
+          <option>🧘 Lifestyle — clothing, accessories, yoga</option>
+          <option>🌱 Gardening — fiber products, tools, supplies</option>
+          <option>🍃 Food &amp; Wellness — seeds, oil, supplements</option>
+          <option>🧱 Materials — fiber, hempcrete, textiles</option>
+          <option>Multiple categories</option>
+        </select>
+      </div>
+      <div class="fg"><label class="flbl">Tell us about your products</label><textarea class="ftxt" placeholder="Describe what you produce, how it's grown or made, approximate number of products, and why you want to join..."></textarea></div>
+      <div class="fg"><label class="flbl">Website or Instagram</label><input class="finp" type="text" placeholder="https://..."></div>
+      <div class="aterm"><input type="checkbox" class="achk"><span>I understand this is an invite-only platform and my application will be reviewed by the Hempy People team within 5 business days.</span></div>
+      <button class="asub" onclick="submitApp()">Submit Application 🌿</button>
+    </div>
+  </section>
+</div>
+
+<!-- CART -->
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cd-hdr"><div class="cd-ttl">Your Cart</div><button class="cd-cls" onclick="toggleCart()">✕</button></div>
+  <div class="cd-items" id="cd-items"><p style="color:var(--muted);font-size:14px;text-align:center;padding:48px 0;font-weight:300">Your cart is empty 🌿</p></div>
+  <div class="cd-ftr">
+    <div class="cd-co2b"><span style="font-size:22px">🌍</span><div><div class="cd-co2v" id="cart-co2">0 kg CO₂</div><div class="cd-co2l">You are sequestering</div></div></div>
+    <div class="cd-tr"><span class="cd-tl">Total</span><span class="cd-tv">€<span id="cart-total">0</span></span></div>
+    <button class="cd-chk" onclick="checkout()">🌿 Checkout</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const suppliers=[
+  {id:'greenacres',name:'GreenAcres HU',emoji:'🌾',loc:'Budapest, Hungary',desc:'Family-run hemp farm producing premium fiber and food products since 2018. EU organic certified.',co2:2847,prods:6,rating:4.9,sales:312,about:'Family-run farm in the heart of Hungary. We grow Futura 75 and Finola strains, producing everything from raw fiber to cold-pressed seed oil. EU Organic certified, carbon-verified since 2021.'},
+  {id:'fibercraft',name:'FiberCraft Studio',emoji:'🧵',loc:'Amsterdam, Netherlands',desc:'Artisan hemp textile studio. Hand-loomed fabrics and garments with full carbon provenance.',co2:1240,prods:8,rating:4.8,sales:187,about:'Amsterdam-based textile studio specialising in hand-loomed hemp fabrics. Every piece comes with a full carbon certificate traceable to the farm it came from.'},
+  {id:'hempcrete',name:'Hempcrete Builds',emoji:'🧱',loc:'Lyon, France',desc:'Industrial hemp construction materials — blocks, insulation, lime binders for carbon-negative building.',co2:5600,prods:4,rating:4.7,sales:94,about:'Pioneering carbon-negative construction materials from industrial hemp. Our hempcrete products sequester more CO₂ than they emit over their lifetime.'},
+  {id:'bastfarm',name:'Bast Farm DE',emoji:'🌱',loc:'Berlin, Germany',desc:'Specialising in hemp seeds, gardening products, and growing supplies for home and commercial growers.',co2:980,prods:5,rating:4.6,sales:143,about:"Germany's premier hemp seed supplier. Certified Finola and Futura 75 seeds alongside gardening products for home and commercial growers."},
+  {id:'hempypeople',name:'Hempy People',emoji:'🌿',loc:'Budapest, Hungary',desc:'The founding brand — lifestyle, wellness and food products made with love and hemp.',co2:1680,prods:7,rating:5.0,sales:428,about:'The original Hempy People brand. Lifestyle and wellness products celebrating the versatility of industrial hemp — from yoga mats to protein bars.'},
+  {id:'fiberfirst',name:'FiberFirst FR',emoji:'👟',loc:'Bordeaux, France',desc:'Hemp footwear and accessories — shoes, bags and belts crafted from natural hemp fiber.',co2:730,prods:5,rating:4.5,sales:89,about:'French artisan footwear brand making shoes and accessories entirely from hemp fiber and natural rubber. Durable, breathable, genuinely sustainable.'},
+];
+
+const products=[
+  {id:1,name:'Hemp Linen T-Shirt',emoji:'👕',cat:'lifestyle',price:38,co2:2.4,sup:'Hempy People',sid:'hempypeople',desc:'Naturally breathable, grown in Hungary. Offsets 2.4kg CO₂ vs cotton.',bg:'#edf5d8'},
+  {id:2,name:'Hemp Yoga Mat',emoji:'🧘',cat:'lifestyle',price:68,co2:8.2,sup:'Hempy People',sid:'hempypeople',desc:'Natural hemp fiber mat, non-slip backing. 8.2kg CO₂ sequestered.',bg:'#e8f0d0'},
+  {id:3,name:'Hemp Canvas Tote',emoji:'👜',cat:'lifestyle',price:22,co2:3.6,sup:'FiberCraft Studio',sid:'fibercraft',desc:'Heavy-duty natural hemp canvas. Handmade in Amsterdam.',bg:'#f0e8d8'},
+  {id:4,name:'Hemp Running Shoes',emoji:'👟',cat:'lifestyle',price:95,co2:6.1,sup:'FiberFirst FR',sid:'fiberfirst',desc:'Lightweight hemp fiber uppers, natural rubber sole.',bg:'#e8eed8'},
+  {id:5,name:'Hemp Seed Starter Kit',emoji:'🌱',cat:'gardening',price:28,co2:1.8,sup:'Bast Farm DE',sid:'bastfarm',desc:'Everything to start growing hemp at home. 3 certified strains.',bg:'#dcefd0'},
+  {id:6,name:'Hemp Fiber Pots Set',emoji:'🪴',cat:'gardening',price:18,co2:0.9,sup:'Bast Farm DE',sid:'bastfarm',desc:'Biodegradable hemp fiber plant pots. Zero plastic, 100% compostable.',bg:'#e4f0d8'},
+  {id:7,name:'Hemp Mulch 10L',emoji:'🍂',cat:'gardening',price:14,co2:2.1,sup:'GreenAcres HU',sid:'greenacres',desc:'Natural hemp hurd mulch. Retains moisture, suppresses weeds.',bg:'#ece8d8'},
+  {id:8,name:'Hemp Hearts Organic',emoji:'🌾',cat:'food',price:16,co2:1.2,sup:'GreenAcres HU',sid:'greenacres',desc:'Hulled hemp seeds, 33% protein, all essential amino acids. 500g.',bg:'#f0e8d0'},
+  {id:9,name:'Hemp Protein Bar',emoji:'🍫',cat:'food',price:4,co2:0.3,sup:'Hempy People',sid:'hempypeople',desc:'25g protein, natural sweeteners. The planet-positive post-workout bar.',bg:'#ece0d0'},
+  {id:10,name:'Hemp Seed Oil 500ml',emoji:'🧴',cat:'food',price:24,co2:0.8,sup:'GreenAcres HU',sid:'greenacres',desc:'Cold-pressed full-spectrum hemp seed oil. Rich in Omega-3 & 6.',bg:'#e8ecd8'},
+  {id:11,name:'Hempcrete Kit 1m²',emoji:'🧱',cat:'materials',price:45,co2:18.4,sup:'Hempcrete Builds',sid:'hempcrete',desc:'DIY hemp-lime insulation kit. Carbon negative building material.',bg:'#dce8d0'},
+  {id:12,name:'Hemp Raw Fiber 1kg',emoji:'🧵',cat:'materials',price:32,co2:12.0,sup:'FiberCraft Studio',sid:'fibercraft',desc:'Premium Grade A hemp bast fiber. Ready for spinning or weaving.',bg:'#e8ead8'},
+];
+
+let cart=[], cartOpen=false, activeFilter='all';
+
+const grads={greenacres:'linear-gradient(135deg,#2a4a18,#5a8a38)',fibercraft:'linear-gradient(135deg,#2a3a1a,#6a7a4a)',hempcrete:'linear-gradient(135deg,#1a3020,#3a6040)',bastfarm:'linear-gradient(135deg,#1a2a10,#4a6a30)',hempypeople:'linear-gradient(135deg,#3a5a18,#7a9a48)',fiberfirst:'linear-gradient(135deg,#2a2a18,#6a6a38)'};
+
+const catLabel={lifestyle:'🧘 Lifestyle',gardening:'🌱 Gardening',food:'🍃 Food & Wellness',materials:'🧱 Materials'};
+
+function showView(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+name).classList.add('active');
+  window.scrollTo(0,0);
+  if(name==='storefront') renderAll();
+}
+
+function showSupplier(id){
+  const s=suppliers.find(x=>x.id===id);
+  if(!s) return;
+  document.getElementById('sup-hero-content').innerHTML=`
+    <div class="sup-av-big" style="background:${grads[id]||''}">${s.emoji}</div>
+    <div><div class="sup-name-big">${s.name}</div><div class="sup-meta"><span class="sup-badge">✓ Verified</span><span class="sup-loc-txt">📍 ${s.loc}</span></div></div>
+    <div class="sup-stats-row">
+      <div><div class="sup-sv">${s.prods}</div><div class="sup-sl">Products</div></div>
+      <div><div class="sup-sv">${s.rating}</div><div class="sup-sl">Rating</div></div>
+      <div><div class="sup-sv">${s.sales}</div><div class="sup-sl">Sales</div></div>
+    </div>`;
+  document.getElementById('sup-prod-ttl').textContent=s.name+' — Products';
+  document.getElementById('sup-about').textContent=s.about;
+  document.getElementById('sup-co2-num').textContent=s.co2.toLocaleString();
+  const sp=products.filter(p=>p.sid===id);
+  document.getElementById('sup-prod-grid').innerHTML=sp.map(p=>renderCard(p)).join('');
+  showView('supplier');
+}
+
+function renderCard(p){
+  return`<div class="prod-card" data-cat="${p.cat}">
+    <div class="prod-img" style="background:${p.bg}">
+      <div class="prod-img-emoji">${p.emoji}</div>
+      <div class="co2-pill"><div class="co2-dot"></div><span class="co2-txt">+${p.co2}kg CO₂</span></div>
+      <div class="sup-tag" onclick="event.stopPropagation();showSupplier('${p.sid}')">${p.sup}</div>
+    </div>
+    <div class="prod-body">
+      <div class="prod-cat">${catLabel[p.cat]||p.cat}</div>
+      <div class="prod-name">${p.name}</div>
+      <div class="prod-desc">${p.desc}</div>
+      <div class="prod-footer">
+        <div class="prod-price">€${p.price}</div>
+        <button class="atc" onclick="addCart(this,'${p.name}',${p.price},'${p.emoji}',${p.co2},'${p.sup}')">+ Add</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderAll(){
+  const filtered=activeFilter==='all'?products:products.filter(p=>p.cat===activeFilter);
+  document.getElementById('prod-grid').innerHTML=filtered.map(p=>renderCard(p)).join('');
+  document.getElementById('prod-count').textContent=`Showing ${filtered.length} product${filtered.length!==1?'s':''}`;
+  document.getElementById('sup-grid').innerHTML=suppliers.map(s=>`
+    <div class="sup-card" onclick="showSupplier('${s.id}')">
+      <div class="sc-top"><div class="sc-av" style="background:${grads[s.id]||''}">${s.emoji}</div><div><div class="sc-name">${s.name}</div><div class="sc-loc">📍 ${s.loc}</div></div><div class="sc-ver">✓ Verified</div></div>
+      <div class="sc-desc">${s.desc}</div>
+      <div class="sc-stats"><div class="sc-stat"><div class="sc-sv">${s.prods}</div><div class="sc-sl">Products</div></div><div class="sc-stat"><div class="sc-sv">${s.rating}</div><div class="sc-sl">Rating</div></div><div class="sc-stat"><div class="sc-sv">${s.sales}</div><div class="sc-sl">Sales</div></div></div>
+      <div class="sc-co2"><span style="font-size:16px">🌍</span><span class="sc-co2-val">+${s.co2.toLocaleString()}kg CO₂</span><button class="sc-view">View →</button></div>
+    </div>`).join('');
+  const ticks=['🌿 100% Industrial Hemp','🌍 Carbon Verified','✓ 12 Verified Suppliers','🛒 847 Orders Shipped','🚚 Carbon-neutral Delivery','♻️ Zero Waste Packaging','📊 Real-time Analytics for Suppliers','🌱 Invite-only Platform'];
+  const d=[...ticks,...ticks];
+  document.getElementById('ticker-inner').innerHTML=d.map(i=>`<div class="tick-item"><div class="tick-dot"></div>${i}</div>`).join('');
+  setTimeout(()=>{
+    document.querySelectorAll('.prod-card,.sup-card').forEach(el=>{el.classList.add('fade-up');observer.observe(el);});
+  },50);
+}
+
+function filterWorld(cat,el){
+  activeFilter=cat;
+  document.querySelectorAll('.nav-cat,.world-tab').forEach(t=>t.classList.remove('active'));
+  if(el) el.classList.add('active');
+  renderAll();
+  const anchor=document.getElementById('shop-anchor');
+  if(anchor) anchor.scrollIntoView({behavior:'smooth'});
+}
+
+function addCart(btn,name,price,emoji,co2,sup){
+  const ex=cart.find(i=>i.name===name);
+  if(ex) ex.qty++;
+  else cart.push({name,price,emoji,co2,sup,qty:1});
+  btn.textContent='✓ Added'; btn.classList.add('done');
+  setTimeout(()=>{btn.textContent='+ Add';btn.classList.remove('done');},1500);
+  updateCart();
+  showToast('🌍 +'+co2+'kg CO₂ · '+name+' added');
+}
+
+function removeItem(i){cart.splice(i,1);updateCart();}
+
+function updateCart(){
+  const count=cart.reduce((s,i)=>s+i.qty,0);
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const co2=cart.reduce((s,i)=>s+i.co2*i.qty,0).toFixed(1);
+  document.getElementById('cart-count').textContent=count;
+  document.getElementById('cart-total').textContent=total;
+  document.getElementById('cart-co2').textContent=co2+' kg CO₂';
+  document.getElementById('cd-items').innerHTML=cart.length===0
+    ?'<p style="color:var(--muted);font-size:14px;text-align:center;padding:48px 0;font-weight:300">Your cart is empty 🌿</p>'
+    :cart.map((item,idx)=>`<div class="cd-item"><div class="cd-img">${item.emoji}</div><div style="flex:1"><div class="cd-nm">${item.name}</div><div class="cd-sup">${item.sup}</div><div class="cd-co">🌍 +${(item.co2*item.qty).toFixed(1)}kg CO₂ · qty: ${item.qty}</div><div class="cd-pr">€${item.price*item.qty}</div></div><button class="cd-rm" onclick="removeItem(${idx})">✕</button></div>`).join('');
+  const base=24847,extra=cart.reduce((s,i)=>s+i.co2*i.qty,0);
+  const orb=document.getElementById('orb-num');
+  if(orb) orb.textContent=Math.round(base+extra).toLocaleString();
+}
+
+function toggleCart(){
+  cartOpen=!cartOpen;
+  document.getElementById('cart-drawer').classList.toggle('open',cartOpen);
+  document.getElementById('cart-overlay').classList.toggle('open',cartOpen);
+}
+
+function checkout(){
+  if(!cart.length) return;
+  const co2=cart.reduce((s,i)=>s+i.co2*i.qty,0).toFixed(1);
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  showToast('🌿 Order placed! €'+total+' · '+co2+'kg CO₂ sequestered. Thank you!');
+  cart=[];updateCart();toggleCart();
+}
+
+function submitApp(){
+  showToast("🌿 Application received! We'll be in touch within 5 business days.");
+  setTimeout(()=>showView('storefront'),2000);
+}
+
+function renderBarChart(){
+  const months=['Oct','Nov','Dec','Jan','Feb','Mar'];
+  const vals=[2100,2800,3200,2900,3600,4284];
+  const max=Math.max(...vals);
+  document.getElementById('bar-chart').innerHTML=months.map((m,i)=>`
+    <div class="bc"><div class="b hb ${i===5?'hi':''}" style="height:${(vals[i]/max)*100}%" title="€${vals[i].toLocaleString()}"></div><div class="bl">${m}</div></div>`).join('');
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+function animCount(el,target,dur){
+  const start=performance.now();
+  function step(now){
+    const p=Math.min((now-start)/dur,1),e=1-Math.pow(1-p,3);
+    el.textContent=Math.floor(target*e).toLocaleString();
+    if(p<1) requestAnimationFrame(step);
+    else el.textContent=target.toLocaleString();
+  }
+  requestAnimationFrame(step);
+}
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting) e.target.classList.add('visible');});
+},{threshold:0.1});
+
+window.addEventListener('load',()=>{
+  renderAll();
+  renderBarChart();
+  setTimeout(()=>{
+    const o=document.getElementById('orb-num');
+    if(o) animCount(o,24847,2800);
+    const b=document.getElementById('orb-bar');
+    if(b) b.style.width='67%';
+  },600);
+});
+</script>
+</body>
+</html>

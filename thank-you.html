@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You — Planetary Assets Zrt</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Syne:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a0e1a;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --text-dim: rgba(255,255,255,0.7);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--navy);
+    color: white;
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+  .container {
+    max-width: 560px;
+    animation: fadeUp 0.8s ease forwards;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .check {
+    width: 64px;
+    height: 64px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 1.5rem;
+    color: var(--gold);
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  h1 em { font-style: italic; color: var(--gold-light); }
+  p {
+    color: var(--text-dim);
+    line-height: 1.8;
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+  }
+  a {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    transition: background 0.3s;
+  }
+  a:hover { background: var(--gold-light); }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="check">✓</div>
+    <h1>Thank <em>you</em></h1>
+    <p>Your message has been received. A member of the Planetary Assets team will be in touch with you shortly.</p>
+    <a href="https://planetaryassets.org">← Back to website</a>
+  </div>
+</body>
+</html>
