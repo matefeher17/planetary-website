@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HempX Innovációs Kft. | Kender-mész Kompozit Építőanyag Fejlesztés</title>
+<meta name="description" content="A HempX Innovációs Kft. az NKFI Alap Gyorsítósáv programjának támogatásával kender kompozit építőanyagokat fejleszt építőipari elemek számára.">
+<meta name="keywords" content="kender-mész kompozit, kender alapú építőanyag, fenntartható építőanyag, NKFI Gyorsítósáv, ipari kender, karbonnegatív építőanyag, kenderkompozit, hempcrete Hungary">
+<meta name="robots" content="index, follow">
+<!-- TODO: állítsd be a végleges domaint -->
+<meta property="og:title" content="HempX Innovációs Kft. — Kender kompozit építőanyag fejlesztés">
+<meta property="og:description" content="Tudományosan validált, kender–mész–adhezív alapú építőanyag-család fejlesztése Magyarországon, NKFI Gyorsítósáv támogatással.">
+<meta property="og:type" content="website">
+
+<!-- TODO: HempX Google Analytics azonosító beállítása -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink:        #0c1410;
+    --ink-1:      #101a15;
+    --ink-2:      #16241d;
+    --gold:       #c9a84c;
+    --gold-light: #e3c87e;
+    --hemp:       #84a06c;
+    --hemp-deep:  #4f6b43;
+    --stone:      #e8e5d8;
+    --stone-2:    #f3f0e7;
+    --stone-ink:  #18221c;
+    --stone-dim:  #4d5a52;
+    --white:      #f6f5ef;
+    --dim:        rgba(246,245,239,0.62);
+    --dim-2:      rgba(246,245,239,0.40);
+    --line:       rgba(201,168,76,0.18);
+    --line-soft:  rgba(246,245,239,0.09);
+
+    --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+    --sans:  'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    --mono:  'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ink);
+    color: var(--white);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* fine grain — kept very subtle */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.025; pointer-events: none; z-index: 9999;
+  }
+
+  a { color: inherit; }
+
+  /* ─────────────── shared type ─────────────── */
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.4rem;
+  }
+  .eyebrow::before {
+    content: '';
+    width: 28px; height: 1px;
+    background: var(--gold);
+    display: inline-block;
+  }
+  .eyebrow.on-stone { color: var(--hemp-deep); }
+  .eyebrow.on-stone::before { background: var(--hemp-deep); }
+
+  .h-display {
+    font-family: var(--serif);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.005em;
+  }
+  .h-display em { font-style: italic; color: var(--gold-light); }
+  .on-stone .h-display em, .h-display.on-stone em { color: var(--hemp-deep); }
+
+  .lede { color: var(--dim); font-size: 1rem; line-height: 1.85; }
+  .lede.on-stone { color: var(--stone-dim); }
+
+  /* ─────────────── section frame ─────────────── */
+  .band { padding: 7rem 4rem; position: relative; }
+  .band--stone { background: var(--stone); color: var(--stone-ink); }
+  .band--ink-2 { background: var(--ink-1); }
+  .wrap { max-width: 1180px; margin: 0 auto; position: relative; }
+
+  .sec-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(2rem, 4.2vw, 3.4rem);
+    line-height: 1.12;
+    margin-bottom: 1.4rem;
+  }
+  .sec-title em { font-style: italic; color: var(--gold-light); }
+  .band--stone .sec-title em { color: var(--hemp-deep); }
+
+  .rule { width: 52px; height: 1px; background: var(--gold); margin: 1.6rem 0; }
+  .band--stone .rule { background: var(--hemp-deep); }
+
+  /* ─────────────── NAV ─────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: linear-gradient(to bottom, rgba(12,20,16,0.92), transparent);
+    transition: background .3s, border-color .3s, backdrop-filter .3s;
+    border-bottom: 1px solid transparent;
+  }
+  .brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+  .brand svg { width: 34px; height: 34px; display: block; }
+  .brand-name {
+    font-family: var(--serif);
+    font-size: 1.25rem; font-weight: 400;
+    letter-spacing: 0.04em; color: var(--white);
+  }
+  .brand-name b { font-weight: 400; color: var(--gold); }
+  .nav-links { list-style: none; display: flex; gap: 2.1rem; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: var(--dim);
+    font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 500; transition: color .25s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta {
+    border: 1px solid var(--gold); color: var(--gold) !important;
+    padding: 0.5rem 1.15rem; transition: background .25s, color .25s;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--ink) !important; }
+
+  .burger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px; z-index: 200;
+  }
+  .burger span { width: 24px; height: 1.6px; background: var(--gold); transition: .3s; display: block; }
+  .burger.open span:nth-child(1) { transform: translateY(6.6px) rotate(45deg); }
+  .burger.open span:nth-child(2) { opacity: 0; }
+  .burger.open span:nth-child(3) { transform: translateY(-6.6px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none; position: fixed; inset: 0; z-index: 150;
+    background: rgba(12,20,16,0.985);
+    flex-direction: column; align-items: center; justify-content: center; gap: 1.8rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--serif); font-size: 1.9rem; font-weight: 300;
+    color: var(--dim); text-decoration: none; letter-spacing: 0.03em;
+  }
+  .mobile-menu a:hover { color: var(--gold-light); }
+
+  /* ─────────────── HERO ─────────────── */
+  .hero {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 9rem 4rem 7rem; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 50% 60% at 78% 42%, rgba(201,168,76,0.07), transparent 60%),
+      radial-gradient(ellipse 45% 55% at 12% 88%, rgba(132,160,108,0.06), transparent 55%),
+      linear-gradient(165deg, #0c1410 0%, #0f1a14 52%, #0b120e 100%);
+  }
+  .hero-core {
+    position: absolute; right: 4rem; top: 50%; transform: translateY(-50%);
+    width: 34vw; max-width: 460px; opacity: 0.9; pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 660px; }
+  .hero h1 {
+    font-size: clamp(2.6rem, 5.4vw, 4.7rem);
+    margin: 0.4rem 0 1.4rem;
+  }
+  .hero-sub { max-width: 470px; margin-bottom: 2.3rem; }
+  .hero-actions { display: flex; gap: 1.1rem; align-items: center; flex-wrap: wrap; }
+
+  .btn {
+    font-family: var(--sans);
+    font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase;
+    font-weight: 600; text-decoration: none; padding: 0.92rem 1.9rem;
+    display: inline-block; transition: all .25s;
+  }
+  .btn-solid { background: var(--gold); color: var(--ink); }
+  .btn-solid:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.22); }
+  .btn-ghost { color: var(--dim); display: inline-flex; align-items: center; gap: 0.5rem; padding-left: 0; padding-right: 0; }
+  .btn-ghost:hover { color: var(--gold-light); }
+
+  .hero-meta {
+    position: absolute; left: 4rem; right: 4rem; bottom: 3rem; z-index: 2;
+    display: flex; gap: 3rem; flex-wrap: wrap;
+    border-top: 1px solid var(--line); padding-top: 1.5rem;
+  }
+  .hero-meta div { display: flex; flex-direction: column; gap: 0.3rem; }
+  .hero-meta .k { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim-2); }
+  .hero-meta .v { font-family: var(--mono); font-size: 1.05rem; color: var(--gold-light); font-weight: 500; }
+
+  /* ─────────────── PROJECT DATA (spec sheet) ─────────────── */
+  .spec-head { max-width: 760px; margin-bottom: 3rem; }
+  .spec-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border: 1px solid rgba(24,34,28,0.16);
+    background: var(--stone-2);
+  }
+  .spec-cell { padding: 2rem 1.8rem; border-right: 1px solid rgba(24,34,28,0.12); }
+  .spec-cell:last-child { border-right: none; }
+  .spec-cell .k { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hemp-deep); margin-bottom: 0.85rem; }
+  .spec-cell .v { font-family: var(--mono); font-size: 0.92rem; color: var(--stone-ink); line-height: 1.5; word-break: break-word; }
+  .spec-cell .v.big { font-family: var(--serif); font-size: 2rem; font-weight: 400; letter-spacing: -0.01em; }
+  .spec-note {
+    margin-top: 1.5rem; font-family: var(--mono); font-size: 0.72rem;
+    color: var(--stone-dim); letter-spacing: 0.02em; line-height: 1.7;
+    display: flex; gap: 0.75rem; align-items: flex-start;
+  }
+  .spec-note span:first-child { color: var(--hemp-deep); }
+
+  /* ─────────────── WHY HEMP (3 cols) ─────────────── */
+  .why-head { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: end; margin-bottom: 4rem; }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--line); }
+  .why-col { padding: 2.5rem 2.1rem; border-right: 1px solid var(--line); transition: background .35s; }
+  .why-col:last-child { border-right: none; }
+  .why-col:hover { background: rgba(201,168,76,0.035); }
+  .why-num { font-family: var(--mono); font-size: 0.7rem; color: var(--hemp); letter-spacing: 0.1em; margin-bottom: 1.3rem; }
+  .why-col h3 { font-family: var(--serif); font-weight: 400; font-size: 1.45rem; color: var(--white); margin-bottom: 0.9rem; line-height: 1.2; }
+  .why-col p { font-size: 0.88rem; color: var(--dim); line-height: 1.75; }
+  .why-col .data { font-family: var(--mono); font-size: 0.82rem; color: var(--gold-light); margin-top: 1rem; display: block; }
+
+  /* ─────────────── PULL QUOTE ─────────────── */
+  .quote { padding: 6rem 4rem; background: var(--ink-2); text-align: center; }
+  .quote blockquote {
+    font-family: var(--serif); font-style: italic; font-weight: 300;
+    font-size: clamp(1.5rem, 3.4vw, 2.4rem); line-height: 1.4;
+    max-width: 900px; margin: 0 auto 1.5rem; color: var(--white);
+  }
+  .quote cite { font-family: var(--mono); font-style: normal; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
+
+  /* ─────────────── TRL + SCIENCE ─────────────── */
+  .trl-wrap { max-width: 920px; margin: 0 auto 4.5rem; }
+  .trl-track { display: flex; align-items: center; margin-top: 2.5rem; }
+  .trl-step { flex: 1; text-align: center; position: relative; }
+  .trl-dot { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--stone-dim); background: var(--stone); margin: 0 auto; position: relative; z-index: 2; }
+  .trl-step.active .trl-dot { background: var(--hemp-deep); border-color: var(--hemp-deep); box-shadow: 0 0 0 5px rgba(79,107,67,0.14); }
+  .trl-line { position: absolute; top: 6.5px; left: -50%; width: 100%; height: 1.5px; background: rgba(24,34,28,0.18); z-index: 1; }
+  .trl-step:first-child .trl-line { display: none; }
+  .trl-step.fill .trl-line { background: var(--hemp-deep); }
+  .trl-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--stone-dim); margin-top: 0.9rem; }
+  .trl-step.active .trl-label { color: var(--hemp-deep); font-weight: 500; }
+  .trl-caption { display: flex; justify-content: space-between; margin-top: 1.6rem; font-family: var(--mono); font-size: 0.72rem; color: var(--stone-dim); }
+  .trl-caption span { max-width: 46%; }
+  .trl-caption span:last-child { text-align: right; }
+
+  .sci-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .sci-block h4 { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--hemp-deep); margin-bottom: 1.2rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .chip {
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.02em;
+    color: var(--stone-ink); border: 1px solid rgba(24,34,28,0.2);
+    padding: 0.35rem 0.7rem; background: var(--stone-2);
+  }
+  .sci-note { font-family: var(--mono); font-size: 0.72rem; color: var(--stone-dim); margin-top: 1.4rem; line-height: 1.7; }
+
+  /* ─────────────── PARTNERS ─────────────── */
+  .partner-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 1rem; }
+  .partner {
+    background: var(--ink-1); border: 1px solid var(--line);
+    padding: 2rem 2rem 1.8rem; transition: border-color .3s;
+  }
+  .partner:hover { border-color: rgba(201,168,76,0.4); }
+  .partner-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.1rem; }
+  .partner-logo {
+    width: 52px; height: 52px; flex: none;
+    border: 1px dashed var(--line); border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 0.55rem; color: var(--dim-2);
+    text-align: center; letter-spacing: 0.05em;
+  }
+  .partner h3 { font-family: var(--serif); font-weight: 400; font-size: 1.25rem; color: var(--white); line-height: 1.2; }
+  .partner .role { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-top: 0.2rem; }
+  .partner p { font-size: 0.86rem; color: var(--dim); line-height: 1.7; }
+  .partner-foot { margin-top: 1.6rem; font-family: var(--mono); font-size: 0.74rem; color: var(--dim); }
+  .partner-foot b { color: var(--hemp); font-weight: 500; }
+
+  /* ─────────────── PRODUCTS ─────────────── */
+  .prod-head { max-width: 720px; margin-bottom: 3.5rem; }
+  .prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .prod {
+    background: var(--ink-1); border: 1px solid var(--line);
+    padding: 2.2rem 2rem; position: relative; overflow: hidden;
+    transition: transform .3s, border-color .3s;
+  }
+  .prod:hover { transform: translateY(-4px); border-color: rgba(201,168,76,0.4); }
+  .prod-ix { font-family: var(--mono); font-size: 0.72rem; color: var(--hemp); letter-spacing: 0.1em; }
+  .prod h3 { font-family: var(--serif); font-weight: 400; font-size: 1.55rem; color: var(--white); margin: 1.4rem 0 1rem; line-height: 1.18; }
+  .prod-list { list-style: none; }
+  .prod-list li { font-size: 0.85rem; color: var(--dim); padding: 0.28rem 0 0.28rem 0.95rem; position: relative; line-height: 1.5; }
+  .prod-list li::before { content: '–'; position: absolute; left: 0; color: var(--gold); }
+
+  /* ─────────────── MARKET ─────────────── */
+  .mkt-head { max-width: 720px; margin-bottom: 3.5rem; }
+  .mkt-rows { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 4rem; }
+  .mkt-card { background: var(--stone-2); border: 1px solid rgba(24,34,28,0.14); padding: 2rem 1.8rem; }
+  .mkt-card .num { font-family: var(--mono); font-size: 0.72rem; color: var(--hemp-deep); letter-spacing: 0.1em; }
+  .mkt-card h3 { font-family: var(--serif); font-weight: 500; font-size: 1.3rem; color: var(--stone-ink); margin: 0.9rem 0 0.8rem; line-height: 1.2; }
+  .mkt-card p { font-size: 0.85rem; color: var(--stone-dim); line-height: 1.7; }
+
+  .adv-wrap { border-top: 1px solid rgba(24,34,28,0.18); padding-top: 3rem; }
+  .adv-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.7rem 2.5rem; margin-top: 1.5rem; }
+  .adv-item { display: flex; gap: 0.85rem; align-items: flex-start; font-size: 0.9rem; color: var(--stone-ink); padding: 0.4rem 0; }
+  .adv-item svg { flex: none; margin-top: 3px; }
+
+  /* ─────────────── FAQ ─────────────── */
+  .faq-list { max-width: 880px; margin: 2.5rem auto 0; }
+  .faq-item { border-top: 1px solid var(--line); }
+  .faq-item:last-child { border-bottom: 1px solid var(--line); }
+  .faq-q {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+    padding: 1.5rem 0; text-align: left; color: var(--white);
+    font-family: var(--serif); font-size: 1.3rem; font-weight: 400;
+  }
+  .faq-q .plus { font-family: var(--mono); font-size: 1.3rem; color: var(--gold); transition: transform .3s; flex: none; }
+  .faq-item.open .faq-q .plus { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+  .faq-a p { color: var(--dim); font-size: 0.92rem; line-height: 1.8; padding: 0 0 1.6rem; max-width: 760px; }
+
+  /* ─────────────── CONTACT ─────────────── */
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+  .contact-text p { color: var(--dim); line-height: 1.85; margin-bottom: 1.6rem; font-size: 0.95rem; }
+  .cdetail { display: flex; gap: 1rem; margin-bottom: 1rem; }
+  .cdetail .lbl { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); min-width: 90px; padding-top: 0.2rem; }
+  .cdetail .val { font-size: 0.86rem; color: var(--dim); line-height: 1.5; }
+  .cdetail .val.mono { font-family: var(--mono); font-size: 0.78rem; }
+
+  .email-card { background: var(--ink-1); border: 1px solid var(--line); padding: 2.6rem 2.3rem; }
+  .email-card .eyebrow { margin-bottom: 1rem; }
+  .email-address {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(1.45rem, 3vw, 2.05rem);
+    color: var(--gold-light); text-decoration: none;
+    display: inline-block; letter-spacing: 0.01em;
+    word-break: break-word; transition: color .25s;
+  }
+  .email-address:hover { color: var(--gold); }
+  .email-note { color: var(--dim); font-size: 0.92rem; line-height: 1.85; margin: 1.1rem 0 1.9rem; max-width: 30rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .fg { display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1rem; }
+  .fg label { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dim-2); }
+  .fg input, .fg select, .fg textarea {
+    background: rgba(246,245,239,0.04); border: 1px solid var(--line);
+    color: var(--white); padding: 0.82rem 0.95rem; font-family: var(--sans);
+    font-size: 0.9rem; outline: none; transition: border-color .25s; width: 100%;
+  }
+  .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: rgba(201,168,76,0.6); }
+  .fg textarea { resize: vertical; min-height: 130px; }
+  .fg select option { background: var(--ink-1); }
+  .form-submit {
+    background: var(--gold); color: var(--ink); border: none; width: 100%;
+    padding: 1rem; font-family: var(--sans); font-size: 0.74rem;
+    letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600;
+    cursor: pointer; transition: all .25s;
+  }
+  .form-submit:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .form-hint { font-family: var(--mono); font-size: 0.66rem; color: var(--dim-2); margin-top: 0.8rem; line-height: 1.6; }
+
+  /* ─────────────── FOOTER ─────────────── */
+  footer { background: var(--ink); border-top: 1px solid var(--line); padding: 3.5rem 4rem 2.5rem; }
+  .foot-top { display: grid; grid-template-columns: 1.4fr 1fr; gap: 4rem; align-items: start; padding-bottom: 2.5rem; border-bottom: 1px solid var(--line-soft); }
+  .foot-brand { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1rem; }
+  .foot-brand svg { width: 30px; height: 30px; }
+  .foot-brand .nm { font-family: var(--serif); font-size: 1.15rem; color: var(--white); }
+  .foot-brand .nm b { color: var(--gold); font-weight: 400; }
+  .foot-parent { font-family: var(--mono); font-size: 0.72rem; color: var(--dim); letter-spacing: 0.05em; }
+  .foot-parent a { color: var(--gold); text-decoration: none; }
+  .fund { display: flex; gap: 1.3rem; align-items: flex-start; }
+  .fund-logo {
+    width: 110px; height: 64px; flex: none;
+    border: 1px dashed var(--line); border-radius: 4px;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    font-family: var(--mono); font-size: 0.58rem; color: var(--dim-2); letter-spacing: 0.05em; line-height: 1.4; padding: 0.4rem;
+  }
+  .fund p { font-family: var(--mono); font-size: 0.72rem; color: var(--dim); line-height: 1.65; }
+  .foot-bottom { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; padding-top: 1.8rem; flex-wrap: wrap; }
+  .foot-bottom .copy { font-family: var(--mono); font-size: 0.68rem; color: var(--dim-2); }
+  .foot-bottom .pid { font-family: var(--mono); font-size: 0.66rem; color: var(--dim-2); letter-spacing: 0.03em; }
+
+  /* ─────────────── reveal ─────────────── */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ─────────────── responsive ─────────────── */
+  @media (max-width: 900px) {
+    .spec-grid, .why-grid, .prod-grid, .mkt-rows { grid-template-columns: 1fr 1fr; }
+    .partner-grid { grid-template-columns: 1fr; }
+    .sci-cols, .contact-inner, .why-head, .foot-top { grid-template-columns: 1fr; gap: 2.5rem; }
+    .adv-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 1.1rem 1.4rem; }
+    .nav-links { display: none; }
+    .burger { display: flex; }
+    .band, .quote { padding: 4.5rem 1.4rem; }
+    .hero { padding: 7rem 1.4rem 9rem; min-height: 100svh; }
+    .hero-core { width: 70vw; right: -12%; opacity: 0.28; }
+    .hero-meta { left: 1.4rem; right: 1.4rem; bottom: 2rem; gap: 1.5rem; }
+    .spec-grid, .why-grid, .prod-grid, .mkt-rows { grid-template-columns: 1fr; }
+    .spec-cell, .why-col { border-right: none; border-bottom: 1px solid rgba(24,34,28,0.12); }
+    .why-col { border-bottom-color: var(--line); }
+    .spec-cell:last-child, .why-col:last-child { border-bottom: none; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { padding: 3rem 1.4rem 2rem; }
+    .foot-bottom { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 480px) {
+    .hero h1 { font-size: clamp(2.2rem, 10vw, 3rem); }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .btn-solid { text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ─────────────── NAV ─────────────── -->
+<nav id="nav">
+  <a href="#top" class="brand" aria-label="HempX – kezdőlap">
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="3" y="3" width="34" height="34" rx="3" stroke="#c9a84c" stroke-width="0.9" opacity="0.55"/>
+      <path d="M11 11 L29 29 M29 11 L11 29" stroke="#c9a84c" stroke-width="1.1"/>
+      <path d="M20 6 L20 14 M20 26 L20 34 M6 20 L14 20 M26 20 L34 20" stroke="#84a06c" stroke-width="0.8" opacity="0.7"/>
+      <circle cx="20" cy="20" r="2.4" fill="#c9a84c"/>
+    </svg>
+    <span class="brand-name">Hemp<b>X</b></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#projekt">A projekt</a></li>
+    <li><a href="#tudomany">Tudomány</a></li>
+    <li><a href="#partnerek">Partnerek</a></li>
+    <li><a href="#termekek">Termékek</a></li>
+    <li><a href="#piac">Piac</a></li>
+    <li><a href="#kapcsolat" class="nav-cta">Kapcsolat</a></li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Menü" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#projekt" class="m-link">A projekt</a>
+  <a href="#tudomany" class="m-link">Tudomány</a>
+  <a href="#partnerek" class="m-link">Partnerek</a>
+  <a href="#termekek" class="m-link">Termékek</a>
+  <a href="#piac" class="m-link">Piac</a>
+  <a href="#kapcsolat" class="m-link" style="color:var(--gold)">Kapcsolat</a>
+</div>
+
+<!-- ─────────────── HERO ─────────────── -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+
+  <!-- SIGNATURE: hemp–lime composite cross-section with a measurement scale -->
+  <svg class="hero-core" viewBox="0 0 460 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- measurement ruler -->
+    <line x1="56" y1="60" x2="56" y2="540" stroke="#c9a84c" stroke-width="0.7" opacity="0.4"/>
+    <g stroke="#c9a84c" stroke-width="0.6" opacity="0.35">
+      <line x1="48" y1="60" x2="56" y2="60"/><line x1="48" y1="156" x2="56" y2="156"/>
+      <line x1="48" y1="252" x2="56" y2="252"/><line x1="48" y1="348" x2="56" y2="348"/>
+      <line x1="48" y1="444" x2="56" y2="444"/><line x1="48" y1="540" x2="56" y2="540"/>
+    </g>
+    <text x="44" y="63" fill="#84a06c" font-family="monospace" font-size="9" text-anchor="end" opacity="0.6">0</text>
+    <text x="44" y="351" fill="#84a06c" font-family="monospace" font-size="9" text-anchor="end" opacity="0.6">120</text>
+    <text x="44" y="543" fill="#84a06c" font-family="monospace" font-size="9" text-anchor="end" opacity="0.6">240</text>
+
+    <!-- composite sample frame -->
+    <rect x="86" y="60" width="320" height="480" stroke="#c9a84c" stroke-width="1" opacity="0.75"/>
+
+    <!-- strata: finish / hemp-lime body / hybrid timber layer -->
+    <line x1="86" y1="120" x2="406" y2="120" stroke="#c9a84c" stroke-width="0.6" opacity="0.45"/>
+    <line x1="86" y1="470" x2="406" y2="470" stroke="#c9a84c" stroke-width="0.6" opacity="0.45"/>
+
+    <!-- top finish hatch -->
+    <g stroke="#c9a84c" stroke-width="0.5" opacity="0.3">
+      <line x1="86" y1="62" x2="116" y2="118"/><line x1="126" y1="62" x2="156" y2="118"/>
+      <line x1="166" y1="62" x2="196" y2="118"/><line x1="206" y1="62" x2="236" y2="118"/>
+      <line x1="246" y1="62" x2="276" y2="118"/><line x1="286" y1="62" x2="316" y2="118"/>
+      <line x1="326" y1="62" x2="356" y2="118"/><line x1="366" y1="62" x2="396" y2="118"/>
+    </g>
+
+    <!-- hemp hurd aggregate in the lime body (scattered particles) -->
+    <g opacity="0.5">
+      <circle cx="130" cy="170" r="6" stroke="#84a06c" stroke-width="0.7"/>
+      <circle cx="220" cy="200" r="9" stroke="#84a06c" stroke-width="0.7"/>
+      <circle cx="320" cy="165" r="5" stroke="#84a06c" stroke-width="0.7"/>
+      <circle cx="170" cy="250" r="7" stroke="#84a06c" stroke-width="0.7"/>
+      <circle cx="290" cy="270" r="10" stroke="#84a06c" stroke-width="0.7"/>
+      <circle cx="120" cy="320" r="8" stroke="#84a06c" stroke-width="0.7"/>
+      <circle cx="240" cy="340" r="6" stroke="#84a06c" stroke-width="0.7"/>
+      <circle cx="350" cy="330" r="7" stroke="#84a06c" stroke-width="0.7"/>
+      <circle cx="190" cy="400" r="9" stroke="#84a06c" stroke-width="0.7"/>
+      <circle cx="300" cy="420" r="6" stroke="#84a06c" stroke-width="0.7"/>
+      <circle cx="140" cy="430" r="5" stroke="#84a06c" stroke-width="0.7"/>
+    </g>
+    <!-- micro-pores -->
+    <g fill="#c9a84c" opacity="0.28">
+      <circle cx="160" cy="190" r="1.4"/><circle cx="260" cy="230" r="1.4"/><circle cx="200" cy="300" r="1.4"/>
+      <circle cx="330" cy="380" r="1.4"/><circle cx="150" cy="370" r="1.4"/><circle cx="270" cy="390" r="1.4"/>
+      <circle cx="210" cy="440" r="1.4"/><circle cx="310" cy="290" r="1.4"/>
+    </g>
+
+    <!-- hybrid timber layer (bottom) -->
+    <g stroke="#c9a84c" stroke-width="0.6" opacity="0.4">
+      <path d="M86 490 q80 -10 160 0 t160 0" fill="none"/>
+      <path d="M86 510 q80 -10 160 0 t160 0" fill="none"/>
+      <path d="M86 528 q80 -8 160 0 t160 0" fill="none"/>
+    </g>
+
+    <!-- layer callouts -->
+    <line x1="406" y1="90" x2="430" y2="90" stroke="#84a06c" stroke-width="0.6" opacity="0.6"/>
+    <text x="406" y="84" fill="#84a06c" font-family="monospace" font-size="8.5" text-anchor="end" opacity="0.7">FELÜLET</text>
+    <line x1="406" y1="300" x2="430" y2="300" stroke="#84a06c" stroke-width="0.6" opacity="0.6"/>
+    <text x="406" y="294" fill="#84a06c" font-family="monospace" font-size="8.5" text-anchor="end" opacity="0.7">KENDER–MÉSZ</text>
+    <line x1="406" y1="505" x2="430" y2="505" stroke="#84a06c" stroke-width="0.6" opacity="0.6"/>
+    <text x="406" y="499" fill="#84a06c" font-family="monospace" font-size="8.5" text-anchor="end" opacity="0.7">FA HIBRID</text>
+  </svg>
+
+  <div class="hero-content">
+    <span class="eyebrow">NKFI Gyorsítósáv · 2025–2027</span>
+    <h1 class="h-display">Kender kompozit alapú <em>építőanyagok</em> fejlesztése</h1>
+    <p class="hero-sub lede">
+      A HempX Innovációs Kft. ipari rostkenderből, speciális mészkeverékekből és természetes
+      adhezív rendszerekből fejleszt új generációs, fenntartható építőipari kompozitokat —
+      a laboratóriumi prototípustól az üzemi környezetben validált megoldásokig.
+    </p>
+    <div class="hero-actions">
+      <a href="#projekt" class="btn btn-solid">A projekt megismerése</a>
+      <a href="#termekek" class="btn btn-ghost">Termékfejlesztések →</a>
+    </div>
+  </div>
+
+  <div class="hero-meta">
+    <div><span class="k">Technológiai szint</span><span class="v">TRL4 → TRL7</span></div>
+    <div><span class="k">Projektidőszak</span><span class="v">2025–2027 · 24 hó</span></div>
+    <div><span class="k">Elnyert támogatás</span><span class="v">279 907 170 Ft</span></div>
+  </div>
+</section>
+
+<!-- ─────────────── PROJECT DATA ─────────────── -->
+<section class="band band--stone" id="projekt">
+  <div class="wrap">
+    <div class="spec-head reveal">
+      <span class="eyebrow on-stone">Projektadatok</span>
+      <h2 class="sec-title">Az <em>NKFI Gyorsítósáv</em> projekt</h2>
+      <p class="lede on-stone">
+        A HempX a Nemzeti Kutatási, Fejlesztési és Innovációs Alap Gyorsítósáv programjának
+        támogatásával kender–mész–adhezív alapú kompozit építőanyag-családot fejleszt.
+        A kiindulópont egy laboratóriumban tesztelt alfa prototípus; a cél az üzemi
+        környezetben validált, műszakilag dokumentált TRL7 szint elérése.
+      </p>
+    </div>
+
+    <div class="spec-grid reveal">
+      <div class="spec-cell">
+        <div class="k">Projektazonosító</div>
+        <div class="v">NKFIH-2025-1.1.2.-<br>Gyorsítósáv-2025-00019</div>
+      </div>
+      <div class="spec-cell">
+        <div class="k">Projektidőszak</div>
+        <div class="v">2025–2027<br>24 hónap</div>
+      </div>
+      <div class="spec-cell">
+        <div class="k">Elnyert támogatás</div>
+        <div class="v big">279 907 170 Ft</div>
+        <div class="v" style="margin-top:.4rem">vissza nem térítendő</div>
+      </div>
+      <div class="spec-cell">
+        <div class="k">Kedvezményezett</div>
+        <div class="v big" style="font-size:1.5rem">HempX<br>Innovációs Kft.</div>
+      </div>
+    </div>
+    <div class="spec-note reveal">
+      <span>↳</span>
+      <span>A projekt a Nemzeti Kutatási, Fejlesztési és Innovációs Alap Gyorsítósáv programjának támogatásával valósul meg.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── WHY HEMP ─────────────── -->
+<section class="band">
+  <div class="wrap">
+    <div class="why-head reveal">
+      <div>
+        <span class="eyebrow">Miért a kender</span>
+        <h2 class="sec-title">A kender mint <em>építőipari</em> lehetőség</h2>
+      </div>
+      <p class="lede">
+        Az ipari kender gyorsan növő, évente megújuló alapanyag. Pozdorjája — a szár fás
+        része — kiváló alapot kínál könnyű, páraáteresztő, jó hőtechnikai tulajdonságú
+        építőipari kompozitokhoz.
+      </p>
+    </div>
+
+    <div class="why-grid reveal">
+      <div class="why-col">
+        <div class="why-num">01 / Alapanyag</div>
+        <h3>Természetes és megújuló</h3>
+        <p>Alacsony vízigényű, gyors növekedésű növénykultúra, amely évente megújuló biomasszát ad, miközben növekedése során szén-dioxidot köt meg.</p>
+        <span class="data">8–15 t/ha szárazanyag</span>
+      </div>
+      <div class="why-col">
+        <div class="why-num">02 / Épületfizika</div>
+        <h3>Kedvező hő- és páratechnika</h3>
+        <p>A kenderalapú rendszerek alacsony testsűrűsége jó komfortérzetet és kedvező hőtárolási viselkedést biztosíthat.</p>
+        <span class="data">λ ≈ 0,06–0,08 W/mK</span>
+      </div>
+      <div class="why-col">
+        <div class="why-num">03 / Validáció</div>
+        <h3>Tudományosan igazolt</h3>
+        <p>Nem csupán anyagkísérletezés: laboratóriumi és üzemi környezetben mért, dokumentált fejlesztési folyamat.</p>
+        <span class="data">SZTE + Mélyépítő Labor</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── QUOTE ─────────────── -->
+<section class="quote reveal">
+  <blockquote>
+    „A kender nem csupán mezőgazdasági alapanyag, hanem építőipari lehetőség: természetes,
+    megújuló, és képes új irányt adni a fenntartható anyagfejlesztésnek.”
+  </blockquote>
+  <cite>— HempX Innovációs Kft. · K+F csapat</cite>
+</section>
+
+<!-- ─────────────── TRL + SCIENCE ─────────────── -->
+<section class="band band--stone" id="tudomany">
+  <div class="wrap">
+    <div class="trl-wrap reveal">
+      <span class="eyebrow on-stone">Technológiai érettség</span>
+      <h2 class="sec-title">A laboratóriumtól az <em>üzemi validációig</em></h2>
+
+      <div class="trl-track" role="img" aria-label="Technológiai érettségi szint TRL4-ről TRL7-re">
+        <div class="trl-step active fill"><span class="trl-line"></span><div class="trl-dot"></div><div class="trl-label">TRL4</div></div>
+        <div class="trl-step fill"><span class="trl-line"></span><div class="trl-dot"></div><div class="trl-label">TRL5</div></div>
+        <div class="trl-step fill"><span class="trl-line"></span><div class="trl-dot"></div><div class="trl-label">TRL6</div></div>
+        <div class="trl-step active fill"><span class="trl-line"></span><div class="trl-dot"></div><div class="trl-label">TRL7</div></div>
+      </div>
+      <div class="trl-caption">
+        <span>Kiindulás: laboratóriumban tesztelt alfa prototípus.</span>
+        <span>Cél: üzemi környezetben validált, dokumentált prototípus.</span>
+      </div>
+    </div>
+
+    <div class="sci-cols reveal">
+      <div class="sci-block">
+        <h4>Vizsgált anyagjellemzők</h4>
+        <div class="chips">
+          <span class="chip">nyomószilárdság</span>
+          <span class="chip">hajlítószilárdság</span>
+          <span class="chip">húzószilárdság</span>
+          <span class="chip">kopásállóság</span>
+          <span class="chip">csúszásellenállás</span>
+          <span class="chip">vízfelvétel</span>
+          <span class="chip">fagyállóság</span>
+          <span class="chip">páradiffúzió</span>
+          <span class="chip">hővezetés (λ)</span>
+          <span class="chip">akusztika</span>
+          <span class="chip">tűzvédelem</span>
+          <span class="chip">UV- / öregedésállóság</span>
+        </div>
+        <p class="sci-note">Az akkreditált, MSZ EN szabványok szerinti minősítő vizsgálatokat a Mélyépítő Labor Kft. végzi.</p>
+      </div>
+      <div class="sci-block">
+        <h4>Nagyműszeres vizsgálatok · SZTE</h4>
+        <div class="chips">
+          <span class="chip">IR / Raman</span>
+          <span class="chip">XRD</span>
+          <span class="chip">termoanalitika</span>
+          <span class="chip">Mikro-CT</span>
+          <span class="chip">SEM–EDS</span>
+          <span class="chip">N₂-adszorpció</span>
+          <span class="chip">nedvesítési vizsgálat</span>
+        </div>
+        <p class="sci-note">A Szegedi Tudományegyetem műszeres platformja a kötési folyamat, a pórusszerkezet és a szerkezet–tulajdonság összefüggések mélyebb megértését támogatja.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── PARTNERS ─────────────── -->
+<section class="band" id="partnerek">
+  <div class="wrap">
+    <div class="prod-head reveal">
+      <span class="eyebrow">Konzorcium</span>
+      <h2 class="sec-title">Projektpartnerek és <em>szerepek</em></h2>
+    </div>
+
+    <div class="partner-grid reveal">
+      <div class="partner">
+        <div class="partner-top">
+          <div class="partner-logo">HempX<br>logó</div>
+          <div><h3>HempX Innovációs Kft.</h3><div class="role">Konzorciumvezető</div></div>
+        </div>
+        <p>Receptúrák kidolgozása, a titkos know-how kezelése, prototípus- és mintagyártás, valamint a projekt szakmai és pénzügyi menedzsmentje.</p>
+      </div>
+      <div class="partner">
+        <div class="partner-top">
+          <div class="partner-logo">SZTE<br>logó</div>
+          <div><h3>Szegedi Tudományegyetem</h3><div class="role">Ipari kutatás</div></div>
+        </div>
+        <p>Nagyműszeres anyagvizsgálatok, mikrostruktúra-elemzés, valamint a kötési és száradási folyamatok, illetve a szerkezet–tulajdonság összefüggések feltárása.</p>
+      </div>
+      <div class="partner">
+        <div class="partner-top">
+          <div class="partner-logo">Labor<br>logó</div>
+          <div><h3>Mélyépítő Labor Kft.</h3><div class="role">Akkreditált minősítés</div></div>
+        </div>
+        <p>Akkreditált, MSZ EN szabványok szerinti vizsgálatok: fagyállóság, sűrűség, szilárdság és vízzárósági mérések.</p>
+      </div>
+      <div class="partner">
+        <div class="partner-top">
+          <div class="partner-logo">Macline<br>logó</div>
+          <div><h3>Macline Hungary Kft.</h3><div class="role">Piacra jutás</div></div>
+        </div>
+        <p>A piacra jutási stratégia kidolgozása, piaci igényfelmérés, üzleti partnerek azonosítása és szakmai kiállításokon való részvétel.</p>
+      </div>
+    </div>
+    <p class="partner-foot reveal">↳ Alapanyag-biztosítás: <b>Green Pol Kft.</b></p>
+  </div>
+</section>
+
+<!-- ─────────────── PRODUCTS ─────────────── -->
+<section class="band band--ink-2" id="termekek">
+  <div class="wrap">
+    <div class="prod-head reveal">
+      <span class="eyebrow">Termékfejlesztések</span>
+      <h2 class="sec-title">Kenderkompozit <em>építőanyag-család</em></h2>
+      <p class="lede">
+        A fejlesztés alatt álló termékek prototípus- és validációs fázisban vannak.
+        A cél a laboratóriumi alfa prototípusoktól az üzemi környezetben validált, TRL7 szintű megoldásokig eljutni.
+      </p>
+    </div>
+
+    <div class="prod-grid reveal">
+      <div class="prod">
+        <div class="prod-ix">01</div>
+        <h3>Homlokzati és belső burkolati panelek</h3>
+        <ul class="prod-list">
+          <li>belső falburkolatok</li>
+          <li>akusztikai panelek</li>
+          <li>homlokzati panelek</li>
+          <li>padlóburkolati elemek</li>
+          <li>látszó, természetes textúrák</li>
+        </ul>
+      </div>
+      <div class="prod">
+        <div class="prod-ix">02</div>
+        <h3>Hibrid fa–kenderkompozit szerkezetek</h3>
+        <ul class="prod-list">
+          <li>vázkitöltő elemek</li>
+          <li>födémszerkezeti komponensek</li>
+          <li>előregyártott moduláris rendszerek</li>
+          <li>hőszigetelő falazati elemek</li>
+        </ul>
+      </div>
+      <div class="prod">
+        <div class="prod-ix">03</div>
+        <h3>Önthető kenderkompozit rendszerek</h3>
+        <ul class="prod-list">
+          <li>zsaluzott kivitelezés</li>
+          <li>moduláris építés</li>
+          <li>ipari kivitelezhetőség</li>
+          <li>természetes anyaghasználat</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── MARKET ─────────────── -->
+<section class="band band--stone" id="piac">
+  <div class="wrap">
+    <div class="mkt-head reveal">
+      <span class="eyebrow on-stone">Piaci hasznosulás</span>
+      <h2 class="sec-title">Célcsoportok és <em>versenyelőnyök</em></h2>
+      <p class="lede on-stone">
+        Elsődleges célcsoportjaink azok az építőipari szereplők, akik fenntartható,
+        alacsony karbonlábnyomú és innovatív anyagmegoldásokat keresnek.
+      </p>
+    </div>
+
+    <div class="mkt-rows reveal">
+      <div class="mkt-card">
+        <div class="num">01</div>
+        <h3>Önkormányzatok és közintézmények</h3>
+        <p>Zöld közbeszerzési szempontok mentén: közterületi és klímatudatos városfejlesztési, valamint fenntartható burkolati pilot projektekhez.</p>
+      </div>
+      <div class="mkt-card">
+        <div class="num">02</div>
+        <h3>Kivitelezők és beruházók</h3>
+        <p>LEED, BREEAM vagy DGNB szempontrendszer szerint megvalósuló, zöld minősítésű építkezésekhez kínálnak validált, dokumentált alternatívát.</p>
+      </div>
+      <div class="mkt-card">
+        <div class="num">03</div>
+        <h3>Építőanyag-kereskedelmi hálózatok</h3>
+        <p>Hosszabb távon a szabványosított, tanúsított és üzemi környezetben validált termékek nagyobb kereskedelmi hálózatok számára is értékesíthetővé válhatnak.</p>
+      </div>
+    </div>
+
+    <div class="adv-wrap reveal">
+      <span class="eyebrow on-stone">Versenyelőnyök</span>
+      <div class="adv-grid">
+        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Hiánypótló termékkategória Magyarországon</div>
+        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> TRL7 szintű validációs cél</div>
+        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Hazai fejlesztés és gyártási know-how</div>
+        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Rövidebb ellátási lánc</div>
+        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Alacsony karbonlábnyomú alapanyaghasználat</div>
+        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Egyetemi és akkreditált laboratóriumi háttér</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── FAQ ─────────────── -->
+<section class="band">
+  <div class="wrap">
+    <div style="max-width:880px;margin:0 auto" class="reveal">
+      <span class="eyebrow">GYIK</span>
+      <h2 class="sec-title">Gyakran ismételt <em>kérdések</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Mi az a kenderkompozit építőanyag?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Olyan építőipari anyag, amely ipari kenderből származó komponenseket — például pozdorját — kötőanyagokkal és adalékokkal kombinál. A HempX projektben a fejlesztés kender–mész–adhezív rendszerekre épül.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Ugyanaz, mint a hagyományos kenderbeton?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Nem teljesen. A hagyományos hempcrete főként hőszigetelő és vázkitöltő anyagként ismert. A HempX projekt ennél szélesebb alkalmazási kört vizsgál, többek között burkolati és szerkezeti elemek irányába, javított mechanikai és tartóssági jellemzőkkel.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Kereskedelmi forgalomban vannak már a termékek?<span class="plus">+</span></button>
+        <div class="faq-a"><p>A projekt jelenleg kutatás-fejlesztési és prototípus-validációs szakaszban van. A cél a TRL7 technológiai érettségi szint elérése, amely üzemi környezetben validált prototípusokat jelent.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Miért fenntartható a kenderalapú építőanyag?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Az ipari kender gyorsan növő, évente megújuló növény, amely növekedése során szén-dioxidot köt meg. Regionális termesztése csökkentheti a szállítási igényt, építőipari felhasználása pedig hozzájárulhat az alacsony karbonlábnyomú építéshez.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Milyen vizsgálatok igazolják a termékek teljesítményét?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Mechanikai, hőtechnikai, akusztikai, nedvességállósági, fagyállósági, kopásállósági és nagyműszeres anyagszerkezeti vizsgálatok. Az akkreditált méréseket a Mélyépítő Labor Kft., a nagyműszeres vizsgálatokat a Szegedi Tudományegyetem végzi.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── CONTACT ─────────────── -->
+<section class="band band--ink-2" id="kapcsolat">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="contact-text reveal">
+        <span class="eyebrow">Kapcsolat</span>
+        <h2 class="sec-title">Építsük együtt a <em>kender-gazdaságot</em></h2>
+        <div class="rule"></div>
+        <p>
+          Legyen szó kutatási együttműködésről, beruházásról, partnerségről vagy zöld
+          közbeszerzési lehetőségről — örömmel beszélünk Önnel a HempX fejlesztéseiről.
+        </p>
+        <div class="cdetail"><span class="lbl">Cég</span><span class="val">HempX Innovációs Kft.</span></div>
+        <div class="cdetail"><span class="lbl">Projekt</span><span class="val mono">NKFIH-2025-1.1.2.-Gyorsítósáv-2025-00019</span></div>
+        <div class="cdetail"><span class="lbl">Ország</span><span class="val">Magyarország</span></div>
+      </div>
+
+      <div class="contact-email reveal">
+        <div class="email-card">
+          <span class="eyebrow">Írjon nekünk</span>
+          <a href="mailto:hempx2025@gmail.com" class="email-address">hempx2025@gmail.com</a>
+          <p class="email-note">
+            Kérdéseivel, együttműködési vagy partnerségi javaslataival forduljon
+            hozzánk közvetlenül e-mailben.
+          </p>
+          <a href="mailto:hempx2025@gmail.com" class="btn btn-solid">E-mail küldése</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── FOOTER ─────────────── -->
+<footer>
+  <div class="foot-top">
+    <div>
+      <div class="foot-brand">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="3" y="3" width="34" height="34" rx="3" stroke="#c9a84c" stroke-width="0.9" opacity="0.55"/>
+          <path d="M11 11 L29 29 M29 11 L11 29" stroke="#c9a84c" stroke-width="1.1"/>
+          <path d="M20 6 L20 14 M20 26 L20 34 M6 20 L14 20 M26 20 L34 20" stroke="#84a06c" stroke-width="0.8" opacity="0.7"/>
+          <circle cx="20" cy="20" r="2.4" fill="#c9a84c"/>
+        </svg>
+        <span class="nm">Hemp<b>X</b> Innovációs Kft.</span>
+      </div>
+    </div>
+    <div class="fund">
+      <!-- TODO: cseréld le a hivatalos NKFI Alap logóra (lásd a program arculati kézikönyvét) -->
+      <div class="fund-logo">NKFI ALAP<br>logó helye</div>
+      <p>A projekt a Nemzeti Kutatási, Fejlesztési és Innovációs Alap Gyorsítósáv programjának támogatásával valósul meg.</p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span class="copy">© 2026 HempX Innovációs Kft. Minden jog fenntartva.</span>
+    <span class="pid">NKFIH-2025-1.1.2.-Gyorsítósáv-2025-00019</span>
+  </div>
+</footer>
+
+<script>
+  // mobile menu
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', function () {
+    var open = menu.classList.toggle('open');
+    burger.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  document.querySelectorAll('.m-link').forEach(function (a) {
+    a.addEventListener('click', function () {
+      menu.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // nav scroll state
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 70) {
+      nav.style.background = 'rgba(12,20,16,0.97)';
+      nav.style.backdropFilter = 'blur(10px)';
+      nav.style.borderBottomColor = 'rgba(201,168,76,0.12)';
+    } else {
+      nav.style.background = 'linear-gradient(to bottom, rgba(12,20,16,0.92), transparent)';
+      nav.style.backdropFilter = 'none';
+      nav.style.borderBottomColor = 'transparent';
+    }
+  });
+
+  // scroll reveal
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e, i) {
+      if (e.isIntersecting) {
+        setTimeout(function () { e.target.classList.add('in'); }, i * 70);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(function (q) {
+    q.addEventListener('click', function () {
+      var item = q.parentElement;
+      var ans = item.querySelector('.faq-a');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function (it) {
+        it.classList.remove('open');
+        it.querySelector('.faq-a').style.maxHeight = null;
+        it.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+        q.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
