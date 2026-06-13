@@ -125,6 +125,7 @@
     background: linear-gradient(to bottom, rgba(12,20,16,0.92), transparent);
     transition: background .3s, border-color .3s, backdrop-filter .3s;
     border-bottom: 1px solid transparent;
+    gap: 1.5rem;
   }
   .brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
   .brand svg { width: 34px; height: 34px; display: block; }
@@ -134,7 +135,7 @@
     letter-spacing: 0.04em; color: var(--white);
   }
   .brand-name b { font-weight: 400; color: var(--gold); }
-  .nav-links { list-style: none; display: flex; gap: 2.1rem; align-items: center; }
+  .nav-links { list-style: none; display: flex; gap: 2.1rem; align-items: center; margin-right: auto; margin-left: 2.5rem; }
   .nav-links a {
     text-decoration: none; color: var(--dim);
     font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
@@ -146,6 +147,28 @@
     padding: 0.5rem 1.15rem; transition: background .25s, color .25s;
   }
   .nav-cta:hover { background: var(--gold); color: var(--ink) !important; }
+
+  /* ─────────────── LANGUAGE TOGGLE ─────────────── */
+  .lang-toggle {
+    font-family: var(--mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--gold);
+    background: transparent;
+    border: 1px solid var(--line);
+    padding: 0.42rem 0.85rem;
+    cursor: pointer;
+    transition: border-color .25s, color .25s, background .25s;
+    line-height: 1;
+  }
+  .lang-toggle:hover { border-color: var(--gold); color: var(--gold-light); }
+  .mobile-menu .lang-toggle {
+    font-size: 0.72rem;
+    padding: 0.6rem 1.4rem;
+    margin-top: 0.5rem;
+  }
 
   .burger {
     display: none; flex-direction: column; gap: 5px;
@@ -417,6 +440,7 @@
     nav { padding: 1.1rem 1.4rem; }
     .nav-links { display: none; }
     .burger { display: flex; }
+    nav > .lang-toggle { display: none; }
     .band, .quote { padding: 4.5rem 1.4rem; }
     .hero { padding: 7rem 1.4rem 9rem; min-height: 100svh; }
     .hero-core { width: 70vw; right: -12%; opacity: 0.28; }
@@ -447,7 +471,7 @@
 
 <!-- ─────────────── NAV ─────────────── -->
 <nav id="nav">
-  <a href="#top" class="brand" aria-label="HempX – kezdőlap">
+  <a href="#top" class="brand" aria-label="HempX – kezdőlap" data-en-aria="HempX – homepage">
     <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <rect x="3" y="3" width="34" height="34" rx="3" stroke="#c9a84c" stroke-width="0.9" opacity="0.55"/>
       <path d="M11 11 L29 29 M29 11 L11 29" stroke="#c9a84c" stroke-width="1.1"/>
@@ -457,25 +481,27 @@
     <span class="brand-name">Hemp<b>X</b></span>
   </a>
   <ul class="nav-links">
-    <li><a href="#projekt">A projekt</a></li>
-    <li><a href="#tudomany">Tudomány</a></li>
-    <li><a href="#partnerek">Partnerek</a></li>
-    <li><a href="#termekek">Termékek</a></li>
-    <li><a href="#piac">Piac</a></li>
-    <li><a href="#kapcsolat" class="nav-cta">Kapcsolat</a></li>
+    <li><a href="#projekt" data-en="The Project">A projekt</a></li>
+    <li><a href="#tudomany" data-en="Science">Tudomány</a></li>
+    <li><a href="#partnerek" data-en="Partners">Partnerek</a></li>
+    <li><a href="#termekek" data-en="Products">Termékek</a></li>
+    <li><a href="#piac" data-en="Market">Piac</a></li>
+    <li><a href="#kapcsolat" class="nav-cta" data-en="Contact">Kapcsolat</a></li>
   </ul>
-  <button class="burger" id="burger" aria-label="Menü" aria-expanded="false">
+  <button class="lang-toggle" type="button" aria-label="Switch to English">EN</button>
+  <button class="burger" id="burger" aria-label="Menü" data-en-aria="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#projekt" class="m-link">A projekt</a>
-  <a href="#tudomany" class="m-link">Tudomány</a>
-  <a href="#partnerek" class="m-link">Partnerek</a>
-  <a href="#termekek" class="m-link">Termékek</a>
-  <a href="#piac" class="m-link">Piac</a>
-  <a href="#kapcsolat" class="m-link" style="color:var(--gold)">Kapcsolat</a>
+  <a href="#projekt" class="m-link" data-en="The Project">A projekt</a>
+  <a href="#tudomany" class="m-link" data-en="Science">Tudomány</a>
+  <a href="#partnerek" class="m-link" data-en="Partners">Partnerek</a>
+  <a href="#termekek" class="m-link" data-en="Products">Termékek</a>
+  <a href="#piac" class="m-link" data-en="Market">Piac</a>
+  <a href="#kapcsolat" class="m-link" style="color:var(--gold)" data-en="Contact">Kapcsolat</a>
+  <button class="lang-toggle" type="button" aria-label="Switch to English">EN</button>
 </div>
 
 <!-- ─────────────── HERO ─────────────── -->
@@ -540,31 +566,31 @@
 
     <!-- layer callouts -->
     <line x1="406" y1="90" x2="430" y2="90" stroke="#84a06c" stroke-width="0.6" opacity="0.6"/>
-    <text x="406" y="84" fill="#84a06c" font-family="monospace" font-size="8.5" text-anchor="end" opacity="0.7">FELÜLET</text>
+    <text x="406" y="84" fill="#84a06c" font-family="monospace" font-size="8.5" text-anchor="end" opacity="0.7" data-en="SURFACE">FELÜLET</text>
     <line x1="406" y1="300" x2="430" y2="300" stroke="#84a06c" stroke-width="0.6" opacity="0.6"/>
-    <text x="406" y="294" fill="#84a06c" font-family="monospace" font-size="8.5" text-anchor="end" opacity="0.7">KENDER–MÉSZ</text>
+    <text x="406" y="294" fill="#84a06c" font-family="monospace" font-size="8.5" text-anchor="end" opacity="0.7" data-en="HEMP-LIME">KENDER–MÉSZ</text>
     <line x1="406" y1="505" x2="430" y2="505" stroke="#84a06c" stroke-width="0.6" opacity="0.6"/>
-    <text x="406" y="499" fill="#84a06c" font-family="monospace" font-size="8.5" text-anchor="end" opacity="0.7">FA HIBRID</text>
+    <text x="406" y="499" fill="#84a06c" font-family="monospace" font-size="8.5" text-anchor="end" opacity="0.7" data-en="TIMBER HYBRID">FA HIBRID</text>
   </svg>
 
   <div class="hero-content">
-    <span class="eyebrow">NKFI Gyorsítósáv · 2025–2027</span>
-    <h1 class="h-display">Kender kompozit alapú <em>építőanyagok</em> fejlesztése</h1>
-    <p class="hero-sub lede">
+    <span class="eyebrow" data-en="NRDI Accelerator Programme · 2025–2027">NKFI Gyorsítósáv · 2025–2027</span>
+    <h1 class="h-display" data-en="Development of hemp composite <em>building materials</em>">Kender kompozit alapú <em>építőanyagok</em> fejlesztése</h1>
+    <p class="hero-sub lede" data-en="HempX Innovation Ltd. develops next-generation, sustainable construction composites from industrial fibre hemp, special lime mixtures and natural adhesive systems — from laboratory prototype to industrially validated solutions.">
       A HempX Innovációs Kft. ipari rostkenderből, speciális mészkeverékekből és természetes
       adhezív rendszerekből fejleszt új generációs, fenntartható építőipari kompozitokat —
       a laboratóriumi prototípustól az üzemi környezetben validált megoldásokig.
     </p>
     <div class="hero-actions">
-      <a href="#projekt" class="btn btn-solid">A projekt megismerése</a>
-      <a href="#termekek" class="btn btn-ghost">Termékfejlesztések →</a>
+      <a href="#projekt" class="btn btn-solid" data-en="Discover the project">A projekt megismerése</a>
+      <a href="#termekek" class="btn btn-ghost" data-en="Product developments →">Termékfejlesztések →</a>
     </div>
   </div>
 
   <div class="hero-meta">
-    <div><span class="k">Technológiai szint</span><span class="v">TRL4 → TRL7</span></div>
-    <div><span class="k">Projektidőszak</span><span class="v">2025–2027 · 24 hó</span></div>
-    <div><span class="k">Elnyert támogatás</span><span class="v">279 907 170 Ft</span></div>
+    <div><span class="k" data-en="Technology readiness">Technológiai szint</span><span class="v">TRL4 → TRL7</span></div>
+    <div><span class="k" data-en="Project period">Projektidőszak</span><span class="v" data-en="2025–2027 · 24 months">2025–2027 · 24 hó</span></div>
+    <div><span class="k" data-en="Grant awarded">Elnyert támogatás</span><span class="v" data-en="279,907,170 HUF">279 907 170 Ft</span></div>
   </div>
 </section>
 
@@ -572,9 +598,9 @@
 <section class="band band--stone" id="projekt">
   <div class="wrap">
     <div class="spec-head reveal">
-      <span class="eyebrow on-stone">Projektadatok</span>
-      <h2 class="sec-title">Az <em>NKFI Gyorsítósáv</em> projekt</h2>
-      <p class="lede on-stone">
+      <span class="eyebrow on-stone" data-en="Project Data">Projektadatok</span>
+      <h2 class="sec-title" data-en="The <em>NRDI Accelerator</em> Project">Az <em>NKFI Gyorsítósáv</em> projekt</h2>
+      <p class="lede on-stone" data-en="With the support of the Accelerator Programme of the National Research, Development and Innovation Fund, HempX is developing a family of hemp-lime-adhesive based composite building materials. The starting point is a laboratory-tested alpha prototype; the goal is to reach TRL7 — an industrially validated, technically documented level.">
         A HempX a Nemzeti Kutatási, Fejlesztési és Innovációs Alap Gyorsítósáv programjának
         támogatásával kender–mész–adhezív alapú kompozit építőanyag-családot fejleszt.
         A kiindulópont egy laboratóriumban tesztelt alfa prototípus; a cél az üzemi
@@ -584,26 +610,26 @@
 
     <div class="spec-grid reveal">
       <div class="spec-cell">
-        <div class="k">Projektazonosító</div>
+        <div class="k" data-en="Project ID">Projektazonosító</div>
         <div class="v">NKFIH-2025-1.1.2.-<br>Gyorsítósáv-2025-00019</div>
       </div>
       <div class="spec-cell">
-        <div class="k">Projektidőszak</div>
-        <div class="v">2025–2027<br>24 hónap</div>
+        <div class="k" data-en="Project Period">Projektidőszak</div>
+        <div class="v" data-en="2025–2027<br>24 months">2025–2027<br>24 hónap</div>
       </div>
       <div class="spec-cell">
-        <div class="k">Elnyert támogatás</div>
-        <div class="v big">279 907 170 Ft</div>
-        <div class="v" style="margin-top:.4rem">vissza nem térítendő</div>
+        <div class="k" data-en="Grant Awarded">Elnyert támogatás</div>
+        <div class="v big" data-en="279,907,170 HUF">279 907 170 Ft</div>
+        <div class="v" style="margin-top:.4rem" data-en="non-repayable grant">vissza nem térítendő</div>
       </div>
       <div class="spec-cell">
-        <div class="k">Kedvezményezett</div>
+        <div class="k" data-en="Beneficiary">Kedvezményezett</div>
         <div class="v big" style="font-size:1.5rem">HempX<br>Innovációs Kft.</div>
       </div>
     </div>
     <div class="spec-note reveal">
       <span>↳</span>
-      <span>A projekt a Nemzeti Kutatási, Fejlesztési és Innovációs Alap Gyorsítósáv programjának támogatásával valósul meg.</span>
+      <span data-en="The project is implemented with the support of the Accelerator Programme of the National Research, Development and Innovation Fund.">A projekt a Nemzeti Kutatási, Fejlesztési és Innovációs Alap Gyorsítósáv programjának támogatásával valósul meg.</span>
     </div>
   </div>
 </section>
@@ -613,10 +639,10 @@
   <div class="wrap">
     <div class="why-head reveal">
       <div>
-        <span class="eyebrow">Miért a kender</span>
-        <h2 class="sec-title">A kender mint <em>építőipari</em> lehetőség</h2>
+        <span class="eyebrow" data-en="Why Hemp">Miért a kender</span>
+        <h2 class="sec-title" data-en="Hemp as a <em>construction industry</em> opportunity">A kender mint <em>építőipari</em> lehetőség</h2>
       </div>
-      <p class="lede">
+      <p class="lede" data-en="Industrial hemp is a fast-growing, annually renewable raw material. Its hurd — the woody core of the stem — provides an excellent base for lightweight, vapour-permeable construction composites with good thermal properties.">
         Az ipari kender gyorsan növő, évente megújuló alapanyag. Pozdorjája — a szár fás
         része — kiváló alapot kínál könnyű, páraáteresztő, jó hőtechnikai tulajdonságú
         építőipari kompozitokhoz.
@@ -625,22 +651,22 @@
 
     <div class="why-grid reveal">
       <div class="why-col">
-        <div class="why-num">01 / Alapanyag</div>
-        <h3>Természetes és megújuló</h3>
-        <p>Alacsony vízigényű, gyors növekedésű növénykultúra, amely évente megújuló biomasszát ad, miközben növekedése során szén-dioxidot köt meg.</p>
-        <span class="data">8–15 t/ha szárazanyag</span>
+        <div class="why-num" data-en="01 / Raw Material">01 / Alapanyag</div>
+        <h3 data-en="Natural and renewable">Természetes és megújuló</h3>
+        <p data-en="A low-water, fast-growing crop that provides renewable biomass every year, while binding carbon dioxide as it grows.">Alacsony vízigényű, gyors növekedésű növénykultúra, amely évente megújuló biomasszát ad, miközben növekedése során szén-dioxidot köt meg.</p>
+        <span class="data" data-en="8–15 t/ha dry matter">8–15 t/ha szárazanyag</span>
       </div>
       <div class="why-col">
-        <div class="why-num">02 / Épületfizika</div>
-        <h3>Kedvező hő- és páratechnika</h3>
-        <p>A kenderalapú rendszerek alacsony testsűrűsége jó komfortérzetet és kedvező hőtárolási viselkedést biztosíthat.</p>
+        <div class="why-num" data-en="02 / Building Physics">02 / Épületfizika</div>
+        <h3 data-en="Favourable thermal and moisture behaviour">Kedvező hő- és páratechnika</h3>
+        <p data-en="The low density of hemp-based systems can provide good comfort levels and favourable heat-storage behaviour.">A kenderalapú rendszerek alacsony testsűrűsége jó komfortérzetet és kedvező hőtárolási viselkedést biztosíthat.</p>
         <span class="data">λ ≈ 0,06–0,08 W/mK</span>
       </div>
       <div class="why-col">
-        <div class="why-num">03 / Validáció</div>
-        <h3>Tudományosan igazolt</h3>
-        <p>Nem csupán anyagkísérletezés: laboratóriumi és üzemi környezetben mért, dokumentált fejlesztési folyamat.</p>
-        <span class="data">SZTE + Mélyépítő Labor</span>
+        <div class="why-num" data-en="03 / Validation">03 / Validáció</div>
+        <h3 data-en="Scientifically validated">Tudományosan igazolt</h3>
+        <p data-en="Not just material experimentation — a documented development process measured in both laboratory and industrial environments.">Nem csupán anyagkísérletezés: laboratóriumi és üzemi környezetben mért, dokumentált fejlesztési folyamat.</p>
+        <span class="data" data-en="University of Szeged + Mélyépítő Labor">SZTE + Mélyépítő Labor</span>
       </div>
     </div>
   </div>
@@ -648,63 +674,63 @@
 
 <!-- ─────────────── QUOTE ─────────────── -->
 <section class="quote reveal">
-  <blockquote>
+  <blockquote data-en="“Hemp is not just an agricultural raw material but a construction industry opportunity: natural, renewable, and capable of giving new direction to sustainable material development.”">
     „A kender nem csupán mezőgazdasági alapanyag, hanem építőipari lehetőség: természetes,
     megújuló, és képes új irányt adni a fenntartható anyagfejlesztésnek.”
   </blockquote>
-  <cite>— HempX Innovációs Kft. · K+F csapat</cite>
+  <cite data-en="— HempX Innovation Ltd. · R&amp;D Team">— HempX Innovációs Kft. · K+F csapat</cite>
 </section>
 
 <!-- ─────────────── TRL + SCIENCE ─────────────── -->
 <section class="band band--stone" id="tudomany">
   <div class="wrap">
     <div class="trl-wrap reveal">
-      <span class="eyebrow on-stone">Technológiai érettség</span>
-      <h2 class="sec-title">A laboratóriumtól az <em>üzemi validációig</em></h2>
+      <span class="eyebrow on-stone" data-en="Technology Readiness">Technológiai érettség</span>
+      <h2 class="sec-title" data-en="From laboratory to <em>industrial validation</em>">A laboratóriumtól az <em>üzemi validációig</em></h2>
 
-      <div class="trl-track" role="img" aria-label="Technológiai érettségi szint TRL4-ről TRL7-re">
+      <div class="trl-track" role="img" aria-label="Technológiai érettségi szint TRL4-ről TRL7-re" data-en-aria="Technology readiness level from TRL4 to TRL7">
         <div class="trl-step active fill"><span class="trl-line"></span><div class="trl-dot"></div><div class="trl-label">TRL4</div></div>
         <div class="trl-step fill"><span class="trl-line"></span><div class="trl-dot"></div><div class="trl-label">TRL5</div></div>
         <div class="trl-step fill"><span class="trl-line"></span><div class="trl-dot"></div><div class="trl-label">TRL6</div></div>
         <div class="trl-step active fill"><span class="trl-line"></span><div class="trl-dot"></div><div class="trl-label">TRL7</div></div>
       </div>
       <div class="trl-caption">
-        <span>Kiindulás: laboratóriumban tesztelt alfa prototípus.</span>
-        <span>Cél: üzemi környezetben validált, dokumentált prototípus.</span>
+        <span data-en="Starting point: laboratory-tested alpha prototype.">Kiindulás: laboratóriumban tesztelt alfa prototípus.</span>
+        <span data-en="Goal: industrially validated, documented prototype.">Cél: üzemi környezetben validált, dokumentált prototípus.</span>
       </div>
     </div>
 
     <div class="sci-cols reveal">
       <div class="sci-block">
-        <h4>Vizsgált anyagjellemzők</h4>
+        <h4 data-en="Material Properties Tested">Vizsgált anyagjellemzők</h4>
         <div class="chips">
-          <span class="chip">nyomószilárdság</span>
-          <span class="chip">hajlítószilárdság</span>
-          <span class="chip">húzószilárdság</span>
-          <span class="chip">kopásállóság</span>
-          <span class="chip">csúszásellenállás</span>
-          <span class="chip">vízfelvétel</span>
-          <span class="chip">fagyállóság</span>
-          <span class="chip">páradiffúzió</span>
-          <span class="chip">hővezetés (λ)</span>
-          <span class="chip">akusztika</span>
-          <span class="chip">tűzvédelem</span>
-          <span class="chip">UV- / öregedésállóság</span>
+          <span class="chip" data-en="compressive strength">nyomószilárdság</span>
+          <span class="chip" data-en="flexural strength">hajlítószilárdság</span>
+          <span class="chip" data-en="tensile strength">húzószilárdság</span>
+          <span class="chip" data-en="abrasion resistance">kopásállóság</span>
+          <span class="chip" data-en="slip resistance">csúszásellenállás</span>
+          <span class="chip" data-en="water absorption">vízfelvétel</span>
+          <span class="chip" data-en="frost resistance">fagyállóság</span>
+          <span class="chip" data-en="vapour diffusion">páradiffúzió</span>
+          <span class="chip" data-en="thermal conductivity (λ)">hővezetés (λ)</span>
+          <span class="chip" data-en="acoustics">akusztika</span>
+          <span class="chip" data-en="fire protection">tűzvédelem</span>
+          <span class="chip" data-en="UV / ageing resistance">UV- / öregedésállóság</span>
         </div>
-        <p class="sci-note">Az akkreditált, MSZ EN szabványok szerinti minősítő vizsgálatokat a Mélyépítő Labor Kft. végzi.</p>
+        <p class="sci-note" data-en="Accredited certification tests according to MSZ EN standards are carried out by Mélyépítő Labor Kft.">Az akkreditált, MSZ EN szabványok szerinti minősítő vizsgálatokat a Mélyépítő Labor Kft. végzi.</p>
       </div>
       <div class="sci-block">
-        <h4>Nagyműszeres vizsgálatok · SZTE</h4>
+        <h4 data-en="Advanced Instrumental Analysis · University of Szeged">Nagyműszeres vizsgálatok · SZTE</h4>
         <div class="chips">
           <span class="chip">IR / Raman</span>
           <span class="chip">XRD</span>
-          <span class="chip">termoanalitika</span>
+          <span class="chip" data-en="thermal analysis">termoanalitika</span>
           <span class="chip">Mikro-CT</span>
           <span class="chip">SEM–EDS</span>
-          <span class="chip">N₂-adszorpció</span>
-          <span class="chip">nedvesítési vizsgálat</span>
+          <span class="chip" data-en="N₂ adsorption">N₂-adszorpció</span>
+          <span class="chip" data-en="wetting test">nedvesítési vizsgálat</span>
         </div>
-        <p class="sci-note">A Szegedi Tudományegyetem műszeres platformja a kötési folyamat, a pórusszerkezet és a szerkezet–tulajdonság összefüggések mélyebb megértését támogatja.</p>
+        <p class="sci-note" data-en="The instrumental platform of the University of Szeged supports a deeper understanding of the binding process, pore structure, and structure–property relationships.">A Szegedi Tudományegyetem műszeres platformja a kötési folyamat, a pórusszerkezet és a szerkezet–tulajdonság összefüggések mélyebb megértését támogatja.</p>
       </div>
     </div>
   </div>
@@ -714,41 +740,41 @@
 <section class="band" id="partnerek">
   <div class="wrap">
     <div class="prod-head reveal">
-      <span class="eyebrow">Konzorcium</span>
-      <h2 class="sec-title">Projektpartnerek és <em>szerepek</em></h2>
+      <span class="eyebrow" data-en="Consortium">Konzorcium</span>
+      <h2 class="sec-title" data-en="Project Partners and <em>Roles</em>">Projektpartnerek és <em>szerepek</em></h2>
     </div>
 
     <div class="partner-grid reveal">
       <div class="partner">
         <div class="partner-top">
-          <div class="partner-logo">HempX<br>logó</div>
-          <div><h3>HempX Innovációs Kft.</h3><div class="role">Konzorciumvezető</div></div>
+          <div class="partner-logo" data-en="HempX<br>logo">HempX<br>logó</div>
+          <div><h3>HempX Innovációs Kft.</h3><div class="role" data-en="Consortium Leader">Konzorciumvezető</div></div>
         </div>
-        <p>Receptúrák kidolgozása, a titkos know-how kezelése, prototípus- és mintagyártás, valamint a projekt szakmai és pénzügyi menedzsmentje.</p>
+        <p data-en="Development of formulations, management of confidential know-how, prototype and sample production, and the project's professional and financial management.">Receptúrák kidolgozása, a titkos know-how kezelése, prototípus- és mintagyártás, valamint a projekt szakmai és pénzügyi menedzsmentje.</p>
       </div>
       <div class="partner">
         <div class="partner-top">
-          <div class="partner-logo">SZTE<br>logó</div>
-          <div><h3>Szegedi Tudományegyetem</h3><div class="role">Ipari kutatás</div></div>
+          <div class="partner-logo" data-en="SZTE<br>logo">SZTE<br>logó</div>
+          <div><h3 data-en="University of Szeged">Szegedi Tudományegyetem</h3><div class="role" data-en="Industrial Research">Ipari kutatás</div></div>
         </div>
-        <p>Nagyműszeres anyagvizsgálatok, mikrostruktúra-elemzés, valamint a kötési és száradási folyamatok, illetve a szerkezet–tulajdonság összefüggések feltárása.</p>
+        <p data-en="Advanced instrumental material testing, microstructure analysis, and exploration of binding and drying processes as well as structure–property relationships.">Nagyműszeres anyagvizsgálatok, mikrostruktúra-elemzés, valamint a kötési és száradási folyamatok, illetve a szerkezet–tulajdonság összefüggések feltárása.</p>
       </div>
       <div class="partner">
         <div class="partner-top">
-          <div class="partner-logo">Labor<br>logó</div>
-          <div><h3>Mélyépítő Labor Kft.</h3><div class="role">Akkreditált minősítés</div></div>
+          <div class="partner-logo" data-en="Labor<br>logo">Labor<br>logó</div>
+          <div><h3>Mélyépítő Labor Kft.</h3><div class="role" data-en="Accredited Certification">Akkreditált minősítés</div></div>
         </div>
-        <p>Akkreditált, MSZ EN szabványok szerinti vizsgálatok: fagyállóság, sűrűség, szilárdság és vízzárósági mérések.</p>
+        <p data-en="Accredited testing according to MSZ EN standards: frost resistance, density, strength and water-tightness measurements.">Akkreditált, MSZ EN szabványok szerinti vizsgálatok: fagyállóság, sűrűség, szilárdság és vízzárósági mérések.</p>
       </div>
       <div class="partner">
         <div class="partner-top">
-          <div class="partner-logo">Macline<br>logó</div>
-          <div><h3>Macline Hungary Kft.</h3><div class="role">Piacra jutás</div></div>
+          <div class="partner-logo" data-en="Macline<br>logo">Macline<br>logó</div>
+          <div><h3>Macline Hungary Kft.</h3><div class="role" data-en="Market Entry">Piacra jutás</div></div>
         </div>
-        <p>A piacra jutási stratégia kidolgozása, piaci igényfelmérés, üzleti partnerek azonosítása és szakmai kiállításokon való részvétel.</p>
+        <p data-en="Development of the market-entry strategy, market needs assessment, identification of business partners, and participation in trade exhibitions.">A piacra jutási stratégia kidolgozása, piaci igényfelmérés, üzleti partnerek azonosítása és szakmai kiállításokon való részvétel.</p>
       </div>
     </div>
-    <p class="partner-foot reveal">↳ Alapanyag-biztosítás: <b>Green Pol Kft.</b></p>
+    <p class="partner-foot reveal" data-en="↳ Raw material supply: <b>Green Pol Kft.</b>">↳ Alapanyag-biztosítás: <b>Green Pol Kft.</b></p>
   </div>
 </section>
 
@@ -756,9 +782,9 @@
 <section class="band band--ink-2" id="termekek">
   <div class="wrap">
     <div class="prod-head reveal">
-      <span class="eyebrow">Termékfejlesztések</span>
-      <h2 class="sec-title">Kenderkompozit <em>építőanyag-család</em></h2>
-      <p class="lede">
+      <span class="eyebrow" data-en="Product Developments">Termékfejlesztések</span>
+      <h2 class="sec-title" data-en="Hemp Composite <em>Building Material Family</em>">Kenderkompozit <em>építőanyag-család</em></h2>
+      <p class="lede" data-en="The products under development are in the prototype and validation phase. The goal is to progress from laboratory alpha prototypes to industrially validated, TRL7-level solutions.">
         A fejlesztés alatt álló termékek prototípus- és validációs fázisban vannak.
         A cél a laboratóriumi alfa prototípusoktól az üzemi környezetben validált, TRL7 szintű megoldásokig eljutni.
       </p>
@@ -767,33 +793,33 @@
     <div class="prod-grid reveal">
       <div class="prod">
         <div class="prod-ix">01</div>
-        <h3>Homlokzati és belső burkolati panelek</h3>
+        <h3 data-en="Facade and Interior Cladding Panels">Homlokzati és belső burkolati panelek</h3>
         <ul class="prod-list">
-          <li>belső falburkolatok</li>
-          <li>akusztikai panelek</li>
-          <li>homlokzati panelek</li>
-          <li>padlóburkolati elemek</li>
-          <li>látszó, természetes textúrák</li>
+          <li data-en="interior wall claddings">belső falburkolatok</li>
+          <li data-en="acoustic panels">akusztikai panelek</li>
+          <li data-en="facade panels">homlokzati panelek</li>
+          <li data-en="floor covering elements">padlóburkolati elemek</li>
+          <li data-en="exposed, natural textures">látszó, természetes textúrák</li>
         </ul>
       </div>
       <div class="prod">
         <div class="prod-ix">02</div>
-        <h3>Hibrid fa–kenderkompozit szerkezetek</h3>
+        <h3 data-en="Hybrid Timber–Hemp Composite Structures">Hibrid fa–kenderkompozit szerkezetek</h3>
         <ul class="prod-list">
-          <li>vázkitöltő elemek</li>
-          <li>födémszerkezeti komponensek</li>
-          <li>előregyártott moduláris rendszerek</li>
-          <li>hőszigetelő falazati elemek</li>
+          <li data-en="frame infill elements">vázkitöltő elemek</li>
+          <li data-en="floor structure components">födémszerkezeti komponensek</li>
+          <li data-en="prefabricated modular systems">előregyártott moduláris rendszerek</li>
+          <li data-en="thermal insulating wall elements">hőszigetelő falazati elemek</li>
         </ul>
       </div>
       <div class="prod">
         <div class="prod-ix">03</div>
-        <h3>Önthető kenderkompozit rendszerek</h3>
+        <h3 data-en="Castable Hemp Composite Systems">Önthető kenderkompozit rendszerek</h3>
         <ul class="prod-list">
-          <li>zsaluzott kivitelezés</li>
-          <li>moduláris építés</li>
-          <li>ipari kivitelezhetőség</li>
-          <li>természetes anyaghasználat</li>
+          <li data-en="formwork construction">zsaluzott kivitelezés</li>
+          <li data-en="modular construction">moduláris építés</li>
+          <li data-en="industrial feasibility">ipari kivitelezhetőség</li>
+          <li data-en="use of natural materials">természetes anyaghasználat</li>
         </ul>
       </div>
     </div>
@@ -804,9 +830,9 @@
 <section class="band band--stone" id="piac">
   <div class="wrap">
     <div class="mkt-head reveal">
-      <span class="eyebrow on-stone">Piaci hasznosulás</span>
-      <h2 class="sec-title">Célcsoportok és <em>versenyelőnyök</em></h2>
-      <p class="lede on-stone">
+      <span class="eyebrow on-stone" data-en="Market Application">Piaci hasznosulás</span>
+      <h2 class="sec-title" data-en="Target Groups and <em>Competitive Advantages</em>">Célcsoportok és <em>versenyelőnyök</em></h2>
+      <p class="lede on-stone" data-en="Our primary target groups are construction industry players seeking sustainable, low-carbon and innovative material solutions.">
         Elsődleges célcsoportjaink azok az építőipari szereplők, akik fenntartható,
         alacsony karbonlábnyomú és innovatív anyagmegoldásokat keresnek.
       </p>
@@ -815,30 +841,30 @@
     <div class="mkt-rows reveal">
       <div class="mkt-card">
         <div class="num">01</div>
-        <h3>Önkormányzatok és közintézmények</h3>
-        <p>Zöld közbeszerzési szempontok mentén: közterületi és klímatudatos városfejlesztési, valamint fenntartható burkolati pilot projektekhez.</p>
+        <h3 data-en="Municipalities and Public Institutions">Önkormányzatok és közintézmények</h3>
+        <p data-en="Along green public procurement criteria: for public space and climate-conscious urban development, as well as sustainable paving pilot projects.">Zöld közbeszerzési szempontok mentén: közterületi és klímatudatos városfejlesztési, valamint fenntartható burkolati pilot projektekhez.</p>
       </div>
       <div class="mkt-card">
         <div class="num">02</div>
-        <h3>Kivitelezők és beruházók</h3>
-        <p>LEED, BREEAM vagy DGNB szempontrendszer szerint megvalósuló, zöld minősítésű építkezésekhez kínálnak validált, dokumentált alternatívát.</p>
+        <h3 data-en="Contractors and Investors">Kivitelezők és beruházók</h3>
+        <p data-en="Offering a validated, documented alternative for green-certified construction implemented under LEED, BREEAM or DGNB rating systems.">LEED, BREEAM vagy DGNB szempontrendszer szerint megvalósuló, zöld minősítésű építkezésekhez kínálnak validált, dokumentált alternatívát.</p>
       </div>
       <div class="mkt-card">
         <div class="num">03</div>
-        <h3>Építőanyag-kereskedelmi hálózatok</h3>
-        <p>Hosszabb távon a szabványosított, tanúsított és üzemi környezetben validált termékek nagyobb kereskedelmi hálózatok számára is értékesíthetővé válhatnak.</p>
+        <h3 data-en="Building Material Retail Networks">Építőanyag-kereskedelmi hálózatok</h3>
+        <p data-en="In the longer term, standardised, certified products validated in an industrial environment may become marketable through larger retail networks.">Hosszabb távon a szabványosított, tanúsított és üzemi környezetben validált termékek nagyobb kereskedelmi hálózatok számára is értékesíthetővé válhatnak.</p>
       </div>
     </div>
 
     <div class="adv-wrap reveal">
-      <span class="eyebrow on-stone">Versenyelőnyök</span>
+      <span class="eyebrow on-stone" data-en="Competitive Advantages">Versenyelőnyök</span>
       <div class="adv-grid">
-        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Hiánypótló termékkategória Magyarországon</div>
-        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> TRL7 szintű validációs cél</div>
-        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Hazai fejlesztés és gyártási know-how</div>
-        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Rövidebb ellátási lánc</div>
-        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Alacsony karbonlábnyomú alapanyaghasználat</div>
-        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> Egyetemi és akkreditált laboratóriumi háttér</div>
+        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-en="A gap-filling product category in Hungary">Hiánypótló termékkategória Magyarországon</span></div>
+        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-en="TRL7-level validation target">TRL7 szintű validációs cél</span></div>
+        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-en="Domestic development and manufacturing know-how">Hazai fejlesztés és gyártási know-how</span></div>
+        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-en="Shorter supply chain">Rövidebb ellátási lánc</span></div>
+        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-en="Low-carbon raw material use">Alacsony karbonlábnyomú alapanyaghasználat</span></div>
+        <div class="adv-item"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 8.5l3 3 7-8" stroke="#4f6b43" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> <span data-en="University and accredited laboratory background">Egyetemi és akkreditált laboratóriumi háttér</span></div>
       </div>
     </div>
   </div>
@@ -848,29 +874,29 @@
 <section class="band">
   <div class="wrap">
     <div style="max-width:880px;margin:0 auto" class="reveal">
-      <span class="eyebrow">GYIK</span>
-      <h2 class="sec-title">Gyakran ismételt <em>kérdések</em></h2>
+      <span class="eyebrow" data-en="FAQ">GYIK</span>
+      <h2 class="sec-title" data-en="Frequently Asked <em>Questions</em>">Gyakran ismételt <em>kérdések</em></h2>
     </div>
     <div class="faq-list reveal">
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Mi az a kenderkompozit építőanyag?<span class="plus">+</span></button>
-        <div class="faq-a"><p>Olyan építőipari anyag, amely ipari kenderből származó komponenseket — például pozdorját — kötőanyagokkal és adalékokkal kombinál. A HempX projektben a fejlesztés kender–mész–adhezív rendszerekre épül.</p></div>
+        <button class="faq-q" aria-expanded="false"><span data-en="What is a hemp composite building material?">Mi az a kenderkompozit építőanyag?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p data-en="A construction material that combines components derived from industrial hemp — such as hurd — with binders and additives. In the HempX project, development is based on hemp-lime-adhesive systems.">Olyan építőipari anyag, amely ipari kenderből származó komponenseket — például pozdorját — kötőanyagokkal és adalékokkal kombinál. A HempX projektben a fejlesztés kender–mész–adhezív rendszerekre épül.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Ugyanaz, mint a hagyományos kenderbeton?<span class="plus">+</span></button>
-        <div class="faq-a"><p>Nem teljesen. A hagyományos hempcrete főként hőszigetelő és vázkitöltő anyagként ismert. A HempX projekt ennél szélesebb alkalmazási kört vizsgál, többek között burkolati és szerkezeti elemek irányába, javított mechanikai és tartóssági jellemzőkkel.</p></div>
+        <button class="faq-q" aria-expanded="false"><span data-en="Is it the same as traditional hempcrete?">Ugyanaz, mint a hagyományos kenderbeton?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p data-en="Not entirely. Traditional hempcrete is mainly known as a thermal insulation and frame-infill material. The HempX project investigates a broader range of applications, including cladding and structural elements, with improved mechanical and durability properties.">Nem teljesen. A hagyományos hempcrete főként hőszigetelő és vázkitöltő anyagként ismert. A HempX projekt ennél szélesebb alkalmazási kört vizsgál, többek között burkolati és szerkezeti elemek irányába, javított mechanikai és tartóssági jellemzőkkel.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Kereskedelmi forgalomban vannak már a termékek?<span class="plus">+</span></button>
-        <div class="faq-a"><p>A projekt jelenleg kutatás-fejlesztési és prototípus-validációs szakaszban van. A cél a TRL7 technológiai érettségi szint elérése, amely üzemi környezetben validált prototípusokat jelent.</p></div>
+        <button class="faq-q" aria-expanded="false"><span data-en="Are the products already commercially available?">Kereskedelmi forgalomban vannak már a termékek?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p data-en="The project is currently in the research, development and prototype-validation phase. The goal is to reach TRL7, meaning prototypes validated in an industrial environment.">A projekt jelenleg kutatás-fejlesztési és prototípus-validációs szakaszban van. A cél a TRL7 technológiai érettségi szint elérése, amely üzemi környezetben validált prototípusokat jelent.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Miért fenntartható a kenderalapú építőanyag?<span class="plus">+</span></button>
-        <div class="faq-a"><p>Az ipari kender gyorsan növő, évente megújuló növény, amely növekedése során szén-dioxidot köt meg. Regionális termesztése csökkentheti a szállítási igényt, építőipari felhasználása pedig hozzájárulhat az alacsony karbonlábnyomú építéshez.</p></div>
+        <button class="faq-q" aria-expanded="false"><span data-en="Why is hemp-based building material sustainable?">Miért fenntartható a kenderalapú építőanyag?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p data-en="Industrial hemp is a fast-growing, annually renewable plant that binds carbon dioxide as it grows. Its regional cultivation can reduce transport needs, and its use in construction can contribute to low-carbon building.">Az ipari kender gyorsan növő, évente megújuló növény, amely növekedése során szén-dioxidot köt meg. Regionális termesztése csökkentheti a szállítási igényt, építőipari felhasználása pedig hozzájárulhat az alacsony karbonlábnyomú építéshez.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">Milyen vizsgálatok igazolják a termékek teljesítményét?<span class="plus">+</span></button>
-        <div class="faq-a"><p>Mechanikai, hőtechnikai, akusztikai, nedvességállósági, fagyállósági, kopásállósági és nagyműszeres anyagszerkezeti vizsgálatok. Az akkreditált méréseket a Mélyépítő Labor Kft., a nagyműszeres vizsgálatokat a Szegedi Tudományegyetem végzi.</p></div>
+        <button class="faq-q" aria-expanded="false"><span data-en="What tests verify the performance of the products?">Milyen vizsgálatok igazolják a termékek teljesítményét?</span><span class="plus">+</span></button>
+        <div class="faq-a"><p data-en="Mechanical, thermal, acoustic, moisture-resistance, frost-resistance, abrasion-resistance and advanced instrumental material structure tests. Accredited measurements are carried out by Mélyépítő Labor Kft., and instrumental analyses by the University of Szeged.">Mechanikai, hőtechnikai, akusztikai, nedvességállósági, fagyállósági, kopásállósági és nagyműszeres anyagszerkezeti vizsgálatok. Az akkreditált méréseket a Mélyépítő Labor Kft., a nagyműszeres vizsgálatokat a Szegedi Tudományegyetem végzi.</p></div>
       </div>
     </div>
   </div>
@@ -881,27 +907,27 @@
   <div class="wrap">
     <div class="contact-inner">
       <div class="contact-text reveal">
-        <span class="eyebrow">Kapcsolat</span>
-        <h2 class="sec-title">Építsük együtt a <em>kender-gazdaságot</em></h2>
+        <span class="eyebrow" data-en="Contact">Kapcsolat</span>
+        <h2 class="sec-title" data-en="Let's Build the <em>Hemp Economy</em> Together">Építsük együtt a <em>kender-gazdaságot</em></h2>
         <div class="rule"></div>
-        <p>
+        <p data-en="Whether it's research collaboration, investment, partnership, or green procurement opportunities — we'd be happy to talk to you about HempX's developments.">
           Legyen szó kutatási együttműködésről, beruházásról, partnerségről vagy zöld
           közbeszerzési lehetőségről — örömmel beszélünk Önnel a HempX fejlesztéseiről.
         </p>
-        <div class="cdetail"><span class="lbl">Cég</span><span class="val">HempX Innovációs Kft.</span></div>
-        <div class="cdetail"><span class="lbl">Projekt</span><span class="val mono">NKFIH-2025-1.1.2.-Gyorsítósáv-2025-00019</span></div>
-        <div class="cdetail"><span class="lbl">Ország</span><span class="val">Magyarország</span></div>
+        <div class="cdetail"><span class="lbl" data-en="Company">Cég</span><span class="val">HempX Innovációs Kft.</span></div>
+        <div class="cdetail"><span class="lbl" data-en="Project">Projekt</span><span class="val mono">NKFIH-2025-1.1.2.-Gyorsítósáv-2025-00019</span></div>
+        <div class="cdetail"><span class="lbl" data-en="Country">Ország</span><span class="val" data-en="Hungary">Magyarország</span></div>
       </div>
 
       <div class="contact-email reveal">
         <div class="email-card">
-          <span class="eyebrow">Írjon nekünk</span>
+          <span class="eyebrow" data-en="Get in Touch">Írjon nekünk</span>
           <a href="mailto:hempx2025@gmail.com" class="email-address">hempx2025@gmail.com</a>
-          <p class="email-note">
+          <p class="email-note" data-en="Please contact us directly by email with any questions, collaboration ideas or partnership proposals.">
             Kérdéseivel, együttműködési vagy partnerségi javaslataival forduljon
             hozzánk közvetlenül e-mailben.
           </p>
-          <a href="mailto:hempx2025@gmail.com" class="btn btn-solid">E-mail küldése</a>
+          <a href="mailto:hempx2025@gmail.com" class="btn btn-solid" data-en="Send Email">E-mail küldése</a>
         </div>
       </div>
     </div>
@@ -924,12 +950,12 @@
     </div>
     <div class="fund">
       <!-- TODO: cseréld le a hivatalos NKFI Alap logóra (lásd a program arculati kézikönyvét) -->
-      <div class="fund-logo">NKFI ALAP<br>logó helye</div>
-      <p>A projekt a Nemzeti Kutatási, Fejlesztési és Innovációs Alap Gyorsítósáv programjának támogatásával valósul meg.</p>
+      <div class="fund-logo" data-en="NRDI FUND<br>logo placeholder">NKFI ALAP<br>logó helye</div>
+      <p data-en="The project is implemented with the support of the Accelerator Programme of the National Research, Development and Innovation Fund.">A projekt a Nemzeti Kutatási, Fejlesztési és Innovációs Alap Gyorsítósáv programjának támogatásával valósul meg.</p>
     </div>
   </div>
   <div class="foot-bottom">
-    <span class="copy">© 2026 HempX Innovációs Kft. Minden jog fenntartva.</span>
+    <span class="copy" data-en="© 2026 HempX Innovációs Kft. All rights reserved.">© 2026 HempX Innovációs Kft. Minden jog fenntartva.</span>
     <span class="pid">NKFIH-2025-1.1.2.-Gyorsítósáv-2025-00019</span>
   </div>
 </footer>
@@ -996,6 +1022,85 @@
       }
     });
   });
+
+  // ─────────────── LANGUAGE TOGGLE (HU ⇄ EN) ───────────────
+  (function () {
+    var STORAGE_KEY = 'hempx-lang';
+
+    var META = {
+      hu: {
+        title: 'HempX Innovációs Kft. | Kender-mész Kompozit Építőanyag Fejlesztés',
+        desc: 'A HempX Innovációs Kft. az NKFI Alap Gyorsítósáv programjának támogatásával kender kompozit építőanyagokat fejleszt építőipari elemek számára.',
+        keywords: 'kender-mész kompozit, kender alapú építőanyag, fenntartható építőanyag, NKFI Gyorsítósáv, ipari kender, karbonnegatív építőanyag, kenderkompozit, hempcrete Hungary',
+        ogTitle: 'HempX Innovációs Kft. — Kender kompozit építőanyag fejlesztés',
+        ogDesc: 'Tudományosan validált, kender–mész–adhezív alapú építőanyag-család fejlesztése Magyarországon, NKFI Gyorsítósáv támogatással.'
+      },
+      en: {
+        title: 'HempX Innovation Ltd. | Hemp-Lime Composite Building Materials',
+        desc: "HempX Innovation Ltd. is developing hemp composite building materials for the construction industry with support from the NRDI Fund's Accelerator Programme.",
+        keywords: 'hemp-lime composite, hemp-based building material, sustainable building material, NRDI Accelerator, industrial hemp, carbon-negative building material, hemp composite, hempcrete Hungary',
+        ogTitle: 'HempX Innovation Ltd. — Hemp Composite Building Material Development',
+        ogDesc: 'Development of a scientifically validated hemp-lime-adhesive based building material family in Hungary, supported by the NRDI Accelerator Programme.'
+      }
+    };
+
+    var textEls = document.querySelectorAll('[data-en]');
+    textEls.forEach(function (el) {
+      el.dataset.huContent = el.innerHTML;
+    });
+
+    var ariaEls = document.querySelectorAll('[data-en-aria]');
+    ariaEls.forEach(function (el) {
+      el.dataset.huAria = el.getAttribute('aria-label') || '';
+    });
+
+    var toggles = document.querySelectorAll('.lang-toggle');
+
+    function applyLang(lang) {
+      document.documentElement.setAttribute('lang', lang === 'en' ? 'en' : 'hu');
+
+      textEls.forEach(function (el) {
+        el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.huContent;
+      });
+
+      ariaEls.forEach(function (el) {
+        el.setAttribute('aria-label', lang === 'en' ? el.dataset.enAria : el.dataset.huAria);
+      });
+
+      var m = META[lang];
+      document.title = m.title;
+      var setMeta = function (selector, value) {
+        var el = document.querySelector(selector);
+        if (el) el.setAttribute('content', value);
+      };
+      setMeta('meta[name="description"]', m.desc);
+      setMeta('meta[name="keywords"]', m.keywords);
+      setMeta('meta[property="og:title"]', m.ogTitle);
+      setMeta('meta[property="og:description"]', m.ogDesc);
+
+      toggles.forEach(function (btn) {
+        btn.textContent = lang === 'en' ? 'HU' : 'EN';
+        btn.setAttribute('aria-label', lang === 'en' ? 'Váltás magyarra' : 'Switch to English');
+      });
+
+      try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+    }
+
+    toggles.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var current = document.documentElement.getAttribute('lang') === 'en' ? 'en' : 'hu';
+        applyLang(current === 'en' ? 'hu' : 'en');
+      });
+    });
+
+    var initial = 'hu';
+    try {
+      var saved = localStorage.getItem(STORAGE_KEY);
+      if (saved === 'en' || saved === 'hu') initial = saved;
+    } catch (e) {}
+
+    applyLang(initial);
+  })();
 </script>
 
 </body>
