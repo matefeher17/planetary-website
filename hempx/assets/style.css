@@ -134,7 +134,7 @@ a.chip:hover{border-color:var(--green);background:var(--green);color:#fff}
 .fund-body .lbl{font-family:var(--sans);font-weight:700;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
 .fund-amount{font-family:var(--sans);font-weight:800;font-size:clamp(2.2rem,4.4vw,4.4rem);color:var(--green);letter-spacing:-.02em;line-height:1.1;margin:.4rem 0}
 .fund-body p{margin:0 auto;font-size:1rem;color:var(--muted)}
-.fund-logo img{height:110px;width:auto}
+.fund-logo img{height:130px;width:auto}
 
 /* ── adatrács ── */
 .spec{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}

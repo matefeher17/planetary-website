@@ -27,7 +27,7 @@ def head(title, desc, meta_en, page_css=''):
 <meta property="og:title" content="{html.escape(title, quote=True)}">
 <meta property="og:description" content="{html.escape(desc, quote=True)}">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/hempx-logo.png">
+<meta property="og:image" content="assets/og-image.png">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,7 +51,7 @@ def nav(active):
     mob = items.replace('<li>', '').replace('</li>', '')
     return f'''<nav>
   <a href="index.html" class="brand" aria-label="HempX – kezdőlap" data-en-aria="HempX – home">
-    <img src="assets/hempx-mark.png" alt="" width="73" height="56"><span>Hemp<b>X</b></span>
+    <img src="assets/hempx-mark.png" alt="" width="51" height="54"><span>Hemp<b>X</b></span>
   </a>
   <ul class="nav-links">{items}</ul>
   <button class="lang" type="button" aria-label="Switch to English">EN</button>
@@ -79,7 +79,7 @@ def newsletter():
 def footer():
     return f'''<footer>
   <div class="foot">
-    <a href="index.html" class="brand"><img src="assets/hempx-mark.png" alt="" width="73" height="56"><span>Hemp<b>X</b> Innovációs Kft.</span></a>
+    <a href="index.html" class="brand"><img src="assets/hempx-mark.png" alt="" width="51" height="54"><span>Hemp<b>X</b> Innovációs Kft.</span></a>
     <ul>
       <li><a href="index.html" data-en="Home">Főoldal</a></li>
       <li><a href="projekt.html" data-en="Accelerator Project">Gyorsítósáv projekt</a></li>
